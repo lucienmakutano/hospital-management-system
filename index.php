@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>home-st mary's hospital</title>
+    <title>home-st marys hospital</title>
   </head>
   
   <body>
