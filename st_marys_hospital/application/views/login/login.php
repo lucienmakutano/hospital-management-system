@@ -42,7 +42,7 @@
     </main>
     <footer>
       <div class="footer-copy">
-        copyright &copy; <?php echo date('Y') ?> st marry's hospital all rights reserved.
+        copyright &copy; <?php echo date('Y') ?> st mary's hospital all rights reserved.
       </div>
     </footer>
   </body>

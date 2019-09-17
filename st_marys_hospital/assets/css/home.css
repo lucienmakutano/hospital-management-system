@@ -24,7 +24,7 @@ small{
 	grid-template-rows: 400px;
 }
 .news{
-
+  position: relative;
 }
 .important{
 	border-right: 3px solid black;
@@ -48,6 +48,10 @@ small{
 .footer-content{
   padding-left: 20px;
   padding-top: 10px;
+  color: white;
+}
+a:hover{
+  color: white;
 }
 .footer{
 	background: #303036;
