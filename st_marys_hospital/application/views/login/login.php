@@ -9,7 +9,7 @@
 
     <header>
       <div class="nav-bar">
-        <h1 align="center" style="color: white">St marry's hospital</h1>
+        <h1 align="center" style="color: white">St mary's hospital</h1>
       </div>
     </header>
     <main>
@@ -19,10 +19,10 @@
   	  <div class="login-border">
     		<form action="validation.php" method="post">
       		<div class="login-box">
-      			<div class=" login-left">
+      			<div class="login-left">
           		<div class="form-group">
           			<label style="color: white">Email</label><br>
-          				<input  type="text" name="user" class="form-control" placeholder="example@domain.com"  required ><br><br>
+          				<input  type="email" name="user" class="form-control" placeholder="example@domain.com"  required ><br><br>
           		</div>
           		<div class="form-group">
           			<label style="color: white">Password</label><br>
@@ -34,7 +34,7 @@
             </div>
             <div class="info-right">
               <h2 style="color: white" >You dont have an account yet?</h2>
-              <p style="color: white">kindly visit the hospital so they can make you an account and get you started with</p>
+              <p style="color: white">kindly visit the hospital's IT department so they can make you an account and get you started with</p>
             </div>
          </div>
       	</form>

@@ -31,14 +31,14 @@
 				<div class="footer-content">
 					<div id="support-info">
 						<u>support</u>
-						<p>support@stmary.health</p>
+						<p><a href="#">support@stmary.health</a></p> 
 						<p>0700000000</p>
 					</div>
 					<div id="security-detail">
 						<u>security</u>
-						<p>recover account</p>
-						<p>change password</p>
-						<p>forgot password</p>
+						<p><a href="#">recover account</a></p>
+						<p><a href="#">change password</a></p>
+						<p><a href="#">forgot password</a></p>
 					</div>
 				</div>
 				<div class="footer-copy">
