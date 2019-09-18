@@ -30,6 +30,10 @@ small{
 	border-right: 3px solid black;
 	border-left: 3px solid black;
 }
+.important{
+  text-align: center;
+  padding: 40px;
+}
 .login{
 	margin-top: 35%;
 	text-align: center;
@@ -50,8 +54,20 @@ small{
   padding-top: 10px;
   color: white;
 }
+.footer-content a{
+  text-decoration: none;
+}
 a:hover{
+  background: #000;
+}
+.footer-content a{
   color: white;
+}
+a:active{
+  text-decoration: underline;
+}
+a:visited{
+  color: #fff;
 }
 .footer{
 	background: #303036;
