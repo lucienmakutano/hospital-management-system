@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/login.css') ?>">
     <title>login</title>
   </head>
-  <body style="background: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)),url(<?php echo base_url('assets/images/new.jpg'); ?>)">
-
+  <body>
+ <!-- style="background: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)),url(<?php echo base_url('assets/images/new.jpg'); ?>)" -->
     <header>
       <div class="nav-bar">
         <h1 align="center">St mary's hospital</h1>
@@ -33,7 +33,7 @@
               <button type="submit" class="btn btn-primary" id="log">login</button>
             </div>
             <div class="info-right">
-              <h2>You dont have an account yet?</h2>
+              <h2>Do not have an account yet?</h2>
               <p>kindly visit the hospital's IT department so they can create an account to get you started</p>
             </div>
          </div>
