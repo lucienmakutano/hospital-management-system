@@ -9,7 +9,7 @@
 
     <header>
       <div class="nav-bar">
-        <h1 align="center" style="color: white">St mary's hospital</h1>
+        <h1 align="center">St mary's hospital</h1>
       </div>
     </header>
     <main>
@@ -21,20 +21,20 @@
       		<div class="login-box">
       			<div class="login-left">
           		<div class="form-group">
-          			<label style="color: white">Email</label><br>
-          				<input  type="email" name="user" class="form-control" placeholder="example@domain.com"  required ><br><br>
+          			<label>Email</label><br>
+          				<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  required ><br><br>
           		</div>
           		<div class="form-group">
-          			<label style="color: white">Password</label><br>
+          			<label>Password</label><br>
           				<input  type="Password" name="Password" class="form-control" placeholder="password"  required>
           		</div>
-        			<a href="<?php echo site_url('welcome/changePassword'); ?>" style="color: #00FF00">change password</a>&nbsp;&nbsp;&nbsp;
-        			<a href="<?php echo site_url('welcome/forgotPassword'); ?>" style="color: #00FF00">Forgot password</a><br><br>
+        			<a href="<?php echo site_url('welcome/changePassword'); ?>" style="color: #07248c">change password</a>&nbsp;&nbsp;&nbsp;
+        			<a href="<?php echo site_url('welcome/forgotPassword'); ?>" style="color: #07248c">Forgot password</a><br><br>
               <button type="submit" class="btn btn-primary" id="log">login</button>
             </div>
             <div class="info-right">
-              <h2 style="color: white" >You dont have an account yet?</h2>
-              <p style="color: white">kindly visit the hospital's IT department so they can create an account to get you started</p>
+              <h2>You dont have an account yet?</h2>
+              <p>kindly visit the hospital's IT department so they can create an account to get you started</p>
             </div>
          </div>
       	</form>

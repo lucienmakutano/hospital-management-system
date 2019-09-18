@@ -45,6 +45,10 @@ small{
 	margin-top: 10px;
 	width: 130px;
 }
+button:hover{
+  border-radius: 0.5px;
+  background: #3689f5;
+}
 .footer-content{
 	display: grid;
 	grid-template-columns: 50% 50%;
