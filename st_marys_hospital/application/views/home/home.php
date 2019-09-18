@@ -86,9 +86,9 @@
 					</div>
 					<div id="security-detail">
 						<u>security</u>
-						<p><a href="#">recover account</a></p>
-						<p><a href="#">change password</a></p>
-						<p><a href="#">forgot password</a></p>
+						<p><a href="<?php echo site_url('welcome/changePassword'); ?>">recover account</a></p>
+						<p><a href="<?php echo site_url('welcome/changePassword'); ?>">change password</a></p>
+						<p><a href="<?php echo site_url('welcome/forgotPassword'); ?>">forgot password</a></p>
 					</div>
 				</div>
 				<div class="footer-copy">

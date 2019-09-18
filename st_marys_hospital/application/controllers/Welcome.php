@@ -26,4 +26,10 @@ class Welcome extends CI_Controller {
   public function login(){
     $this->load->view('login/login');
   }
+  public function forgotPassword(){
+    $this->load->view('manage_accounts/forgot_password');
+  }
+  public function changePassword(){
+    $this->load->view('manage_accounts/change_password');
+  }
 }

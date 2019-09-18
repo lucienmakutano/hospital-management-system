@@ -28,13 +28,13 @@
           			<label style="color: white">Password</label><br>
           				<input  type="Password" name="Password" class="form-control" placeholder="password"  required>
           		</div>
-        			<a href="#" style="color: #00FF00">change password</a>&nbsp;&nbsp;&nbsp;
-        			<a href="#" style="color: #00FF00">Forgot password</a><br><br>
+        			<a href="<?php echo site_url('welcome/changePassword'); ?>" style="color: #00FF00">change password</a>&nbsp;&nbsp;&nbsp;
+        			<a href="<?php echo site_url('welcome/forgotPassword'); ?>" style="color: #00FF00">Forgot password</a><br><br>
               <button type="submit" class="btn btn-primary" id="log">login</button>
             </div>
             <div class="info-right">
               <h2 style="color: white" >You dont have an account yet?</h2>
-              <p style="color: white">kindly visit the hospital's IT department so they can make you an account and get you started with</p>
+              <p style="color: white">kindly visit the hospital's IT department so they can create an account to get you started</p>
             </div>
          </div>
       	</form>
