@@ -65,17 +65,17 @@ footer{
 }
 
 #log{
-  background: #07248c;
+  background: #88b3f7;
   width: 120px;
   height: 40px;
   cursor: pointer;
-  color: black;
+  color: #fff;
   opacity: 0.8;
   filter: alpha(opacity=80); /* For IE8 and earlier */
   font-weight: bolder;
 }
 .login-left button:hover{
-  background: #9bafd4;
+  background: #07248c;
   border: 2px solid black;
   opacity: 0.9;
   filter: alpha(opacity=90); /* For IE8 and earlier */
