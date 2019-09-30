@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<?php extend("layouts/layout.php") ?>
+    <?php startblock("title") ?>
+    <?php endblock() ?>
 
-  </body>
-</html>
+    <?php startblock("extra_head") ?>
+    <?php endblock() ?>
+
+    <?php startblock("banner") ?>
+    <?php endblock() ?>
+
+    <?php startblock("menu") ?>
+    <?php endblock() ?>
+
+    <?php startblock("content") ?>
+    <?php endblock() ?>
+<?php end_extend() ?>

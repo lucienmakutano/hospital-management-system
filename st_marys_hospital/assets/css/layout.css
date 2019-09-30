@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Quicksand:500&display=swap');
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.body{
+	display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: 100% 100%;
+	grid-template-areas: "menu banner"
+						 "menu content";
+}
+.banner{
+	grid-area: banner;
+}
+.content{
+	grid-area: content;
+}
+.menu{
+	grid-area: menu;
+}
+.banner{
+    text-align: left;
+    padding-left: 20px;
+    color: #fff;
+    font-family: 'Quicksand', sans-serif;
+}
+.content{
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+}
+.menu li{
+    text-align: center;
+    background-color: rgba(104, 121, 176, 1);
+    font-family: "Open Sans Condensed", sans-serif;
+}
+.menu ul li{
+    text-decoration: none;
+    list-style-type: none;
+}
+.content{
+    padding-left: 20px;
+}
+.menu a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    border-right-color: rgba(0, 0, 0, 0.125);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgba(0, 0, 0, 0.125);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgba(0, 0, 0, 0.125);
+    border-left-style: solid;
+    border-left-width: 1px;
+}
+.menu a:hover{
+    background-color: rgba(104, 121, 176, .7);
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+.menu{
+    border-radius: 10px;
+}
+.banner{
+    height: 75px;
+    background: rgba(104, 121, 176, 1);
+}
+.banner p{
+    font-size: 28px;
+}
+.banner p small{
+    font-size: 16px;
+}
+.menu img{
+    /* width: 120px; */
+    border-radius: 50%;
+    border: 1px solid black;
+}
+#profile-picture a:hover{
+    background-color: #fff;
+    cursor: alias;
+}

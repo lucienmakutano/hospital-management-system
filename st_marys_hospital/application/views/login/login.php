@@ -6,38 +6,37 @@
     <title>login</title>
   </head>
   <body>
- <!-- style="background: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)),url(<?php echo base_url('assets/images/new.jpg'); ?>)" -->
     <header>
       <div class="nav-bar">
         <h1 align="center">St mary's hospital</h1>
       </div>
     </header>
     <main>
-      <div class="top">
-  	     <h1 id="login-head">Login</h1>
-  	  </div>
-  	  <div class="login-border">
+        <div class="top">
+  	        <h1 id="login-head">Login</h1>
+  	    </div>
+  	    <div class="login-border">
     		<form action="validation.php" method="post">
-      		<div class="login-box">
-      			<div class="login-left">
-          		<div class="form-group">
-          			<label>Email</label><br>
-          				<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  required ><br><br>
-          		</div>
-          		<div class="form-group">
-          			<label>Password</label><br>
-          				<input  type="Password" name="Password" class="form-control" placeholder="password"  required>
-          		</div>
-        			<a href="<?php echo site_url('welcome/changePassword'); ?>" style="color: #07248c">change password</a>&nbsp;&nbsp;&nbsp;
-        			<a href="<?php echo site_url('welcome/forgotPassword'); ?>" style="color: #07248c">Forgot password</a><br><br>
-              <button type="submit" class="btn btn-primary" id="log">login</button>
-            </div>
-            <div class="info-right">
-              <h2>Do not have an account yet?</h2>
-              <p>kindly visit the hospital's IT department so they can create an account to get you started</p>
-            </div>
-         </div>
-      	</form>
+          		<div class="login-box">
+          			<div class="login-left">
+                  		<div class="form-group">
+                  			<label>Email</label><br>
+                  				<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  required ><br><br>
+                  		</div>
+              		    <div class="form-group">
+              			<label>Password</label><br>
+              				<input  type="Password" name="Password" class="form-control" placeholder="password"  required>
+              		    </div>
+            			<a href="<?php echo site_url('welcome/changePassword'); ?>" style="color: #07248c">change password</a>&nbsp;&nbsp;&nbsp;
+            			<a href="<?php echo site_url('welcome/forgotPassword'); ?>" style="color: #07248c">Forgot password</a><br><br>
+                        <button type="submit" class="btn btn-primary" id="log">login</button>
+                    </div>
+                    <div class="info-right">
+                      <h1>Do not have an account yet?</h1>
+                      <p>kindly visit the hospital's IT department so they can create an account to get you started.</p>
+                    </div>
+                </div>
+      	     </form>
     	</div>
     </main>
     <footer>
