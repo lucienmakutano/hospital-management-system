@@ -2,7 +2,10 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/layout.css') ?>">
+<!--		<link rel="stylesheet" href="--><?//= base_url('assets/css/adminhome.css') ?><!--">-->
         <?php start_block_marker('title') ?>
         <title>home - st marys hospital</title>
         <?php end_block_marker(); ?>
@@ -33,9 +36,6 @@
 				<?php start_block_marker('content') ?>
                     <!-- for the content design it as you wish -->
 				<?php end_block_marker(); ?>
-				<div class="footer">
-					footer
-				</div>
 			</div>
 		</div>
     </body>

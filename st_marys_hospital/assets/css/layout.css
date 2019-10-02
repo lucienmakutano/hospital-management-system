@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Quicksand:500&display=swap');
 *{
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 }
 .body{
 	display: grid;
     grid-template-columns: 20% auto;
-    grid-template-rows: 100% 100%;
 	grid-template-areas: "menu banner"
 						 "menu content";
 }

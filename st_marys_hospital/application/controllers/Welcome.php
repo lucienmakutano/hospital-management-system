@@ -20,16 +20,28 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('admin/home');
+		$this->load->view('home/home');
 	}
 
   public function login(){
-    $this->load->view('login/login');
+    	$this->load->view('login/login');
   }
   public function forgotPassword(){
-    $this->load->view('manage_accounts/forgot_password');
+    	$this->load->view('manage_accounts/forgot_password');
   }
   public function changePassword(){
-    $this->load->view('manage_accounts/change_password');
+    	$this->load->view('manage_accounts/change_password');
+  }
+  public function admin(){
+		$this->load->view('admin/home');
+  }
+  public function nurse(){
+		$this->load->view('nurse/home');
+  }
+  public function pharmacist(){
+		$this->load->view('pharmacist/home');
+  }
+  public function doctor(){
+		$this->load->view('doctor/home');
   }
 }
