@@ -58,11 +58,29 @@
     border-left-style: solid;
     border-left-width: 1px;
 }
+
+/* unvisited link */
+.menu a:link {
+	color: rgba(104, 121, 176, 1);
+}
+
+/* visited link */
+.menu a:visited {
+	color: rgba(104, 121, 176, 1);
+}
+
+/* mouse over link */
 .menu a:hover{
-    background-color: rgba(104, 121, 176, .7);
-    cursor: pointer;
-    color: #fff;
-    transition: all 0.5s ease 0s;
+	background-color: rgba(104, 121, 176, .7);
+	cursor: pointer;
+	color: #fff;
+	transition: all 0.5s ease 0s;
+}
+
+/* selected link */
+.menu a:active {
+	background-color: rgba(104, 121, 176, .7);
+	color: #fff;
 }
 .menu{
     border-radius: 10px;
@@ -78,11 +96,15 @@
     font-size: 16px;
 }
 .menu img{
-    /* width: 120px; */
+     width: 200px;
     border-radius: 50%;
     border: 1px solid black;
 }
 #profile-picture a:hover{
     background-color: #fff;
     cursor: alias;
+}
+.banner{
+	display: grid;
+	grid-template-columns: 40% 60%;
 }

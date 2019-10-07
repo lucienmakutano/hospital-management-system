@@ -165,8 +165,8 @@
 					<div class="useful-link">
 						<h4>useful links</h4>
 						<ul>
-							<li><a href="<?php echo site_url('welcome/changePassword') ?>" target="_blank">change password</a></li>
-							<li><a href="<?php echo site_url('welcome/forgotPassword') ?>" target="_blank">forgot password</a></li>
+							<li><a href="<?php echo site_url('security/changePassword') ?>" target="_blank">change password</a></li>
+							<li><a href="<?php echo site_url('security/forgotPassword') ?>" target="_blank">forgot password</a></li>
 							<li><a href="<?php echo site_url('welcome/login') ?>" target="_blank">login</a></li>
 						</ul>
 					</div>

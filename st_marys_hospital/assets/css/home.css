@@ -130,6 +130,7 @@ button:hover{
 	width: 65%;
 	height: 40px;
 	border-radius: 5px;
+	border: 1px solid rgba(102, 121, 176, .7);
 }
 textarea{
 	height: 120px;

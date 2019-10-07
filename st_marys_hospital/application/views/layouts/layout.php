@@ -16,12 +16,18 @@
     <body>
 		<div class="body">
 			<div class="banner">
-				<?php start_block_marker('banner') ?>
-                    <!-- use <p> for name and the type of the user -->
-                    <!-- further more enclode the type of the user in <small></small> -->
+				<div>
+					<?php start_block_marker('banner') ?>
+					<!-- use <p> for name and the type of the user -->
+					<!-- further more enclode the type of the user in <small></small> -->
 
-                    <!-- example <p>name<br><small>admin</small><p> -->
-				<?php end_block_marker(); ?>
+					<!-- example <p>name<br><small>admin</small><p> -->
+					<?php end_block_marker(); ?>
+				</div>
+				<div>
+					<p>ST MARY'S HOSPITAL</p>
+				</div>
+
 			</div>
 			<div class="menu">
 				<?php start_block_marker('menu') ?>

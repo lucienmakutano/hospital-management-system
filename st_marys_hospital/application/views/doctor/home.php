@@ -1,21 +1,35 @@
 <?php extend("layouts/layout.php") ?>
-    <?php startblock("title") ?>
-    <?php endblock() ?>
+<?php startblock("title") ?>
+<?php endblock() ?>
 
-    <?php startblock("extra_head") ?>
-    <?php endblock() ?>
+<?php startblock("extra_head") ?>
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/doctor.css') ?>">
+<?php endblock() ?>
 
-    <?php startblock("banner") ?>
-    <p>kirtan <br><small>doctor</small> </p>
-    <?php endblock() ?>
+<?php startblock("banner") ?>
+<p>DR. John Doe<br><small>SURGEON</small></p>
+<?php endblock() ?>
 
-    <?php startblock("menu") ?>
-    <ul>
-        <li><a href="#">appointment</a></li>
-    </ul>
-    <?php endblock() ?>
+<?php startblock("menu") ?>
+<ul>
+	<li id="profile-picture"><a href=""><img width="200" src="<?= base_url('assets/images/doc.png')?>"></a></li>
+	<li><a href="#" class="link">Home</a></li>
+	<li><a href="#" class="link">Appointments</a></li>
+	<li><a href="#" class="link">Prescriptions</a><li>
+	<li><a href="#" class="link">Diagnosis</a></li>
+	<li><a href="#" class="link">Logout</a></li>
+</ul>
+<?php endblock() ?>
 
-    <?php startblock("content") ?>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    <?php endblock() ?>
+<?php startblock("content") ?>
+<div id="content">
+	<div id="ima">
+		<img id="part2"src="<?= base_url('assets/images/clockin.png') ?>">
+		<img id="part1"src="<?= base_url('assets/images/clockout.png') ?>">
+	</div>
+	<a href="#" id="in" >Clockin</a>
+	<a  href="#" id="out" >Clockout</a>
+
+</div>
+<?php endblock() ?>
 <?php end_extend() ?>

@@ -1,4 +1,4 @@
-<?php extend('layouts/layout.php') ?>
+<?php extend('admin/home.php') ?>
 <?php startblock('title') ?>
 <?php endblock() ?>
 
@@ -6,25 +6,13 @@
 <?php endblock() ?>
 
 <?php startblock('banner') ?>
-<p>lucien<br><small>admin</small></p>
+<?php get_extended_block();?>
 <?php endblock() ?>
+
 <?php startblock('menu') ?>
-<ul>
-	<li id="profile-picture"><a href="#"><img src="<?= base_url('assets/images/user.png')?>" alt="profile picture"></a></li>
-	<li><a href="#">manage user</a></li>
-	<li><a href="#">add story</a></li>
-	<li><a href="#">add user</a></li>
-</ul>
+	<?php get_extended_block(); ?>
 <?php endblock() ?>
 <?php startblock('content') ?>
-<div class="search">
-	<?= validation_errors()?>
-
-	<?php echo form_open('form') ?>
-	<input type="text" autofocus name="search-field" placeholder="Search">
-	<button type="submit">Search</button>
-	<?= form_close()?>
-</div>
 <div class="form">
 	<?= validation_errors()?>
 

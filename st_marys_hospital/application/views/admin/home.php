@@ -8,12 +8,14 @@
 
     <?php startblock('banner') ?>
     <p>lucien<br><small>admin</small></p>
+	<?php get_extended_block();?>
     <?php endblock() ?>
     <?php startblock('menu') ?>
+
     <ul>
         <li id="profile-picture"><a href="#"><img src="<?= base_url('assets/images/user.png')?>" alt="profile picture"></a></li>
-        <li><a href="#">Home</a></li>
-		<li><a href="#">Add user</a></li>
+        <li><a href="<?= site_url('admin/') ?>">Home</a></li>
+		<li><a href="<?= site_url('admin/addUser')?>">Add user</a></li>
 		<li><a href="#">Delete user</a></li>
         <li><a href="#">Add news</a></li>
         <li><a href="#">Logout</a></li>
