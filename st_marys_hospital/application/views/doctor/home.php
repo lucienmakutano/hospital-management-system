@@ -4,6 +4,7 @@
 
 <?php startblock("extra_head") ?>
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/doctor.css') ?>">
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/layout.css') ?>">
 <?php endblock() ?>
 
 <?php startblock("banner") ?>
@@ -12,7 +13,7 @@
 
 <?php startblock("menu") ?>
 <ul>
-	<li id="profile-picture"><a href=""><img width="200" src="<?= base_url('assets/images/doc.png')?>"></a></li>
+	<li id="profile-picture"><a href=""><img width="100%" src="<?= base_url('assets/images/doc.png')?>"></a></li>
 	<li><a href="#" class="link">Home</a></li>
 	<li><a href="#" class="link">Appointments</a></li>
 	<li><a href="#" class="link">Prescriptions</a><li>

@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/login.css') ?>">
     <title>login</title>
   </head>
@@ -41,7 +42,7 @@
     </main>
     <footer>
       <div class="footer-copy">
-        copyright &copy; <?php echo date('Y') ?> st mary's hospital all rights reserved.
+        copyright &copy; <?php echo date('Y') ?> st mary's hospital | all rights reserved.
       </div>
     </footer>
   </body>

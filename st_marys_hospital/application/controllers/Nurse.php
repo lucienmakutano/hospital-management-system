@@ -11,4 +11,19 @@ class Nurse extends CI_Controller
     {
         $this->load->view('nurse/home');
     }
+
+    public function newPatient($value='')
+    {
+        $this->load->view('nurse/register_Patient');
+    }
+
+    public function newAppointment($value='')
+    {
+        $this->load->view('nurse/appointment_form');
+    }
+
+    public function assignRoom($value='')
+    {
+        $this->load->view('nurse/assignRoom');
+    }
 }

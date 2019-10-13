@@ -23,31 +23,29 @@ footer{
 .login-box{
 	max-width: 750px;
 	float: none;
-	margin: 80px  auto;
-	margin-left:80px;
+	margin: 80px auto 80px 80px;
 }
 .login-border, .top{
   border: 1px solid white;
   background: white;
   color: black;
   width: auto;
-}
-.login-border, .top{
 	margin-left: 10%;
 	margin-right: 10%;
+	box-shadow: 0 15px 35px 0 rgba(160,166,187, .7), 0 5px 15px 0 rgba(0,0,0, .12);
 }
 .info-right{
-	margin-right: 30px;
+	margin-right: 20px;
 }
 .info-right{
-  padding: 0px;
+  padding: 0;
   text-align: left;
 }
 .top{
 	border: 1px solid white;
 	margin-right:  10%;
 	margin-left: 10%;
-    max-height: 50px;
+    max-height: 70px;
 }
 .login-box{
 	display: grid;
@@ -55,13 +53,12 @@ footer{
     grid-column-gap: 20px;
 }
 .footer-copy{
-  background: #343a40;
   color: #686868;
   height: 30px;
   width: 100%;
   position: absolute;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   padding-top: 10px;
   text-align: center;;
 }
@@ -108,9 +105,8 @@ footer{
     	min-width: 80%;
         min-height: 100%;
     	float: none;
-    	margin: 40px  auto;
-    	margin-left:40px;
-    }
+		margin: 40px auto 40px 40px;
+	}
 }
 h1{
     color: #5466EB;
