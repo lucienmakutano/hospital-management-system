@@ -1,4 +1,4 @@
-<?php extend('nurse/home.php') ?>
+<?php extend('admin/home.php') ?>
 <?php startblock('title') ?>
 <?php endblock() ?>
 
@@ -18,7 +18,7 @@
     <h2>New Patient</h2>
 	<?= validation_errors()?>
 
-	<?= form_open('form') ?>
+	<?= form_open('requests/add_patient') ?>
     	<label> First name
     		<input type="text" required>
     	</label>
@@ -42,8 +42,6 @@
     	</label>
         <input type="submit" name="btn" class="ptn-btn" value="Save">
         <input type="reset" name="btn" class="ptn-btn" value="Clear">
-    	<!-- <button type="submit" class="ptn-btn">Save</button>
-    	<button type="reset" class="ptn-btn">Clear</button> -->
 	<?= form_close()?>
 </div>
 <?php endblock() ?>

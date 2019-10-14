@@ -11,4 +11,12 @@ class Doctor extends CI_Controller
     {
         $this->load->view('doctor/home');
     }
+    public function appointment($value='')
+    {
+        $this->load->view('doctor/appointment');
+    }
+    public function prescription($value='')
+    {
+        $this->load->view('doctor/prescription');
+    }
 }

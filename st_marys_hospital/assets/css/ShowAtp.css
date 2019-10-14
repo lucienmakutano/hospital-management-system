@@ -1,0 +1,37 @@
+
+#new{
+  
+    text-align: left;
+    float: left;
+    margin-bottom: 20px;
+    color: rgba(104, 121, 176, .7)
+}
+#show{
+  text-align: right;
+    float: right;
+    margin-bottom: 20px;
+    color: rgba(104, 121, 176, .7)
+}
+hr{
+  clear: both;
+}
+#upcoming{
+  text-align: center;
+  
+    color: rgba(104, 121, 176, .7)
+}
+table, tr, td, th{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td, th{
+  padding: 5px 5px;
+}
+table{
+  width: 100%;
+  font-size: 18px;
+}
+th{
+  background: rgba(104, 121, 176, 1);
+  color: #fff;
+}

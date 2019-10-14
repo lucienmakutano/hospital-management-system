@@ -12,7 +12,8 @@
 
 		<div class="password pass">
 			<h3>Change your password</h3>
-			<form action="#" method="post">
+			<?= validation_errors()?>
+            <?= form_open('requests/change_password')?>
 				<label>
 					<input type="password" required placeholder="Old password">
 				</label><br><br>
@@ -23,7 +24,7 @@
 					<input type="password" required placeholder="Confirm password">
 				</label><br><br>
 				<button type="submit" name="btn-change">Submit</button>
-			</form>
+			<?= form_close()?>
 		</div>
 
 
@@ -33,4 +34,3 @@
 	<?php endblock();?>
 
 <?php end_extend();?>
-

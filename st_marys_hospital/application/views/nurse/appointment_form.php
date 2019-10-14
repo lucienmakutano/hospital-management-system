@@ -18,7 +18,7 @@
     <h2>New Appointment</h2>
 	<?= validation_errors()?>
 
-	<?= form_open('form') ?>
+	<?= form_open('requests/book_appointment') ?>
         <label> Patient's citation card <br>
     		<input type="text" required>
     	</label>
@@ -36,7 +36,6 @@
     	</label><br>
         <div class="">
             <input type="submit" name="btn" class="ptn-btn" value="Make appointment">
-            <!-- <input type="reset" name="btn" class="ptn-btn" value="Clear"> -->
         </div>
 	<?= form_close()?>
 </div>

@@ -8,16 +8,19 @@
 		<?php get_extended_block();?>
 		<a><button class="btn">Home</button></a>
 	<?php endblock();?>
+
 	<?php startblock('content');?>
 		<div class="password">
 			<h3>Recover your password</h3>
-			<form action="#" method="post">
+			<?= validation_errors()?>
+            <?= form_open('requests/forgot_password')?>
 				<label>
 					<input type="email" required placeholder="Enter your email">
 				</label><br><br>
 				<button type="submit">Send</button>
-			</form>
+			<?= form_close()?>
 		</div>
+
 	<?php endblock();?>
 	<?php startblock('footer');?>
 		<?php get_extended_block();?>

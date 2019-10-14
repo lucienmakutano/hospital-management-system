@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Quicksand:500&display=swap');
-
 input[type=text],
 input[type=email],
 input[type=number],
 input[type=date],
-input[type=time],
-input[type=password],
-input[type=file],
-textarea,
+ input[type=time],
+ textarea,
  select{
   width: 100%;
   padding: 12px 20px;
@@ -16,7 +12,6 @@ textarea,
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .ptn-btn {
@@ -39,7 +34,21 @@ textarea,
     margin-top: 10px;
     padding: 0 20%;
 }
-h2{
+#new{
+    text-align: left;
+    float: left;
     margin-bottom: 20px;
     color: rgba(104, 121, 176, .7)
+}
+#show{
+  text-align: right;
+    float: right;
+    margin-bottom: 20px;
+    color: rgba(104, 121, 176, .7)
+}
+hr{
+  clear: both;
+}
+.prescription-form{
+    padding: 0 20%;
 }

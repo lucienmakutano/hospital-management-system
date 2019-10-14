@@ -15,10 +15,10 @@
 <?php endblock() ?>
 <?php startblock('content') ?>
 <div class="patient-form">
-    <h2>New Patient</h2>
+    <h2>Assign Room</h2>
 	<?= validation_errors()?>
 
-	<?= form_open('form') ?>
+	<?= form_open('requests/assign_room') ?>
     	<label> Patient's citation card
     		<input type="text" required>
     	</label>

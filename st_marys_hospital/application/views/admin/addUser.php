@@ -1,8 +1,10 @@
 <?php extend('admin/home.php') ?>
+
 <?php startblock('title') ?>
 <?php endblock() ?>
 
 <?php startblock('extra_head') ?>
+<link rel="stylesheet" href="<?= base_url('assets/css/nursePatient.css') ?>">
 <?php endblock() ?>
 
 <?php startblock('banner') ?>
@@ -12,8 +14,10 @@
 <?php startblock('menu') ?>
 	<?php get_extended_block(); ?>
 <?php endblock() ?>
+
 <?php startblock('content') ?>
-<div class="form">
+<div class="patient-form">
+    <h2>New User</h2>
 	<?= validation_errors()?>
 
 	<?= form_open('form') ?>
@@ -51,8 +55,8 @@
 	<label> Password
 		<input type="password" required autocomplete="off">
 	</label>
-	<button type="submit">Save</button>
-	<button type="reset">Clear</button>
+	<button type="submit" class="ptn-btn">Save</button>
+	<button type="reset" class="ptn-btn">Clear</button>
 	<?= form_close()?>
 </div>
 <?php endblock() ?>

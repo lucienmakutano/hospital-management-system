@@ -3,7 +3,7 @@
     <?php endblock() ?>
 
     <?php startblock('extra_head') ?>
-	<link rel="stylesheet" href="<?= base_url('assets/css/adminhome.css') ?>"> <!--xmlns="http://www.w3.org/1999/html"-->
+	<link rel="stylesheet" href="<?= base_url('assets/css/adminhome.css') ?>">
     <?php endblock() ?>
 
     <?php startblock('banner') ?>
@@ -16,8 +16,7 @@
         <li id="profile-picture"><a href="#"><img src="<?= base_url('assets/images/user.png')?>" alt="profile picture"></a></li>
         <li><a href="<?= site_url('admin/') ?>">Home</a></li>
 		<li><a href="<?= site_url('admin/addUser')?>">Add user</a></li>
-		<li><a href="#">Delete user</a></li>
-        <li><a href="#">Add news</a></li>
+        <li><a href="<?= site_url('admin/news') ?>">Add news</a></li>
         <li><a href="#">Logout</a></li>
     </ul>
     <?php endblock() ?>

@@ -17,27 +17,29 @@
   	        <h1 id="login-head">Login</h1>
   	    </div>
   	    <div class="login-border">
-    		<form action="validation.php" method="post">
           		<div class="login-box">
           			<div class="login-left">
-                  		<div class="form-group">
-                  			<label>Email</label><br>
-                  				<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  required ><br><br>
-                  		</div>
-              		    <div class="form-group">
-              			<label>Password</label><br>
-              				<input  type="Password" name="Password" class="form-control" placeholder="password"  required>
-              		    </div>
-            			<a href="<?php echo site_url('welcome/changePassword'); ?>" style="color: #07248c">change password</a>&nbsp;&nbsp;&nbsp;
-            			<a href="<?php echo site_url('welcome/forgotPassword'); ?>" style="color: #07248c">Forgot password</a><br><br>
-                        <button type="submit" class="btn btn-primary" id="log">login</button>
+                        <?= validation_errors() ?>
+                        <?= form_open('requests/login') ?>
+                      		<div class="form-group">
+                      			<label>Email</label><br>
+                      			<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  required ><br><br>
+                      		</div>
+                  		    <div class="form-group">
+                  			    <label>Password</label><br>
+                  				<input  type="Password" name="Password" class="form-control" placeholder="password"  required><br><br>
+                  		    </div>
+                            <button type="submit" class="btn btn-primary" id="log">login</button>
+                        <?= form_close() ?>
+                        <br><br><br>
+            			<a href="<?php echo site_url('security/changePassword'); ?>" style="color: #07248c">change password</a>&nbsp;&nbsp;&nbsp;
+            			<a href="<?php echo site_url('security/forgotPassword'); ?>" style="color: #07248c">Forgot password?</a><br><br>
                     </div>
                     <div class="info-right">
                       <h1>Do not have an account yet?</h1>
                       <p>kindly visit the hospital's IT department so they can create an account to get you started.</p>
                     </div>
                 </div>
-      	     </form>
     	</div>
     </main>
     <footer>
