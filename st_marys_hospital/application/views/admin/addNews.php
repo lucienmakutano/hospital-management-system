@@ -5,6 +5,7 @@
 
 <?php startblock('extra_head') ?>
 <link rel="stylesheet" href="<?= base_url('assets/css/nursePatient.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
 <?php endblock() ?>
 
 <?php startblock('banner') ?>
@@ -16,18 +17,18 @@
 <?php endblock() ?>
 
 <?php startblock('content') ?>
-<div class="patient-form">
-	<?= validation_errors()?>
-
-	<?= form_open('requests/add_news') ?>
-	<label> Title
-		<input type="text" required autocomplete="on">
-	</label>
-	<label> Message
-		<textarea name="name" rows="8" cols="80" placeholder="enter the Message here"></textarea>
-	</label>
-	<button type="submit" class="ptn-btn">Publish</button>
-	<?= form_close()?>
-</div>
+	<div class="patient-form">
+		<?= form_open('requests/add_news') ?>
+		<label> Title
+			<input type="text" name="title" value="<?= set_value('title'); ?>">
+			<?php echo form_error('title', '<div class="alert">', '</div>') ?>
+		</label>
+		<label> Message
+			<textarea name="message" rows="8" cols="80" value="<?= set_value('message') ?>" placeholder="enter the Message here"></textarea>
+			<?php echo form_error('message', '<div class="alert">', '</div>')?>
+		</label>
+		<button type="submit" class="ptn-btn">Publish</button>
+		<?= form_close()?>
+	</div>
 <?php endblock() ?>
 <?php end_extend() ?>

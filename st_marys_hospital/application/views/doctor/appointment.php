@@ -16,13 +16,15 @@
 <?php startblock('content') ?>
 
 	<div class="appointment-form">
-		<?php foreach ($data as $dt): ?>
-			<div class="appointment-content">
-				<p id="title"><?php echo $dt['citation card'] ?></p>
-				<p id="content"><?php echo $dt['summary'] ?></p>
-				<button id="btn">learn more</button>
-			</div>
-		<?php endforeach; ?>
+		<?php if(isset($data)): ?>
+			<?php foreach ($data as $dt): ?>
+				<div class="appointment-content">
+					<p id="title"><?php echo $dt['citation card'] ?></p>
+					<p id="content"><?php echo $dt['summary'] ?></p>
+					<a><button id="btn">learn more</button></a>
+				</div>
+			<?php endforeach; ?>
+		<?php endif ?>
 	</div>
 
 <?php endblock() ?>

@@ -4,6 +4,7 @@
 
     <?php startblock('extra_head') ?>
 	<link rel="stylesheet" href="<?= base_url('assets/css/adminhome.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
     <?php endblock() ?>
 
     <?php startblock('banner') ?>
@@ -21,6 +22,11 @@
     </ul>
     <?php endblock() ?>
     <?php startblock('content') ?>
+		<?php
+		if ($this->session->flashdata('message')){
+			echo "<p class='alert alert-success'>".$this->session->flashdata('message')."</p>";
+		}
+		?>
 		<div class="responsive-table">
 			<h3>Users</h3>
 			<table>

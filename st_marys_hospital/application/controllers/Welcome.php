@@ -20,7 +20,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('home/home');
+		$data = $this->FetchDB->get_news();
+		$this->load->view('home/home', array('data' => $data));
 	}
 
     public function login(){

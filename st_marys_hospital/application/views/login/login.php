@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/login.css') ?>">
+      <link rel="stylesheet" href="<?php echo base_url('assets/css/login.css') ?>">
+      <link rel="stylesheet" href="<?php echo base_url('assets/css/alert.css') ?>">
     <title>login</title>
   </head>
   <body>
@@ -21,20 +22,20 @@
           			<div class="login-left">
 						<?php
 							if ($this->session->flashdata('message')){
-								echo "<p class='wy-alert wy-alert-danger'>".$this->session->flashdata('message')."</p>";
+								echo "<p class='alert alert-danger'>".$this->session->flashdata('message')."</p>";
 							}
 						?>
                         <?= form_open('requests/login_users') ?>
                       		<div class="form-group">
                       			<label>Email</label><br>
                       			<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  value="<?php echo set_value('email')?>" >
-								<?php form_error('email') ?>
+								<?php echo form_error('email','<div class="alert">', '</div>') ?>
 								<br><br>
                       		</div>
                   		    <div class="form-group">
                   			    <label>Password</label><br>
                   				<input  type="password" name="password" class="form-control" placeholder="password">
-								<?php form_error('password') ?>
+								<?php echo form_error('password', '<div class="alert">', '</div>') ?>
 								<br><br>
                   		    </div>
                             <button type="submit" class="btn btn-primary" id="log">login</button>

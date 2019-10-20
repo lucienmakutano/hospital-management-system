@@ -12,13 +12,12 @@ class Requests extends CI_Controller
 
 	public function login_users($value='')
     {
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
-
     	$this->form_validation->set_rules('email', 'Email', "required|valid_email");
 		$this->form_validation->set_rules('password', 'Password', "required|min_length[8]");
-		
+
         if ($this->form_validation->run()){
+            $email = $this->input->post('email');
+            $password = $this->input->post('password');
 
         	$result = $this->Login->log_in($email, $password);
 
@@ -53,6 +52,9 @@ class Requests extends CI_Controller
 				}
 			}
 		}
+        else{
+                $this->load->view('login/login');
+        }
     }
 
 	public function logout() {
@@ -94,7 +96,24 @@ class Requests extends CI_Controller
 
     public function add_news($value='')
     {
-        //body
+        $this->form_validation->set_rules('title', 'Title', "required");
+        $this->form_validation->set_rules('message', 'Message', "required|max_length[500]");
+
+        if ($this->form_validation->run()) {
+
+            $data = array(
+                'title' => $this->input->post('title'),
+                'message' => $this->input->post('message'),
+                'date' => date('Y-m-d H:i:m')
+            );
+
+            $message = $this->WriteDB->addNews($data);
+            $this->session->set_flashdata('message', $message);
+            redirect('admin');
+        }
+        else {
+            $this->load->view('admin/addNews');
+        }
     }
 
     public function add_user($value='')
@@ -104,7 +123,6 @@ class Requests extends CI_Controller
 
     public function newUser($value=''){
 
-//		$this->form_validation->set_rules('id', 'Staff Id', "required|numeric|is_unique[staff.staff_id]");
 		$this->form_validation->set_rules('first-name', 'First name', "required|alpha|max_length[30]");
 		$this->form_validation->set_rules('last-name', 'Last name', "required|alpha|max_length[30]");
 		$this->form_validation->set_rules('dob', 'Date of birth', "required");

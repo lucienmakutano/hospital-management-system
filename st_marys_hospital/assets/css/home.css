@@ -80,8 +80,9 @@ button:hover{
 }
 #abv-fld{
 	padding-top: 50px;
-	padding-left: 100px;
+	text-align: center;
 	color: #000000;
+	background-image: url("../../assets/images/background.jpg");
 }
 .call-for-action{
 	padding-top: 100px;
@@ -130,12 +131,13 @@ button:hover{
 	width: 65%;
 	height: 40px;
 	border-radius: 5px;
-	border: 1px solid rgba(102, 121, 176, .7);
+	border: 1px solid rgba(102, 121, 176, 1);
 }
 textarea{
 	height: 120px;
 	width: 65%;
 	border-radius: 5px;
+	border: 1px solid rgba(102, 121, 176, 1);
 }
 form input, textarea{
 	font-family: "montserra", sans-serif;
@@ -152,6 +154,11 @@ form input, textarea{
 }
 .pictures{
 	background-color: #ffffff;
+	box-sizing: border-box;
+}
+.pictures img{
+	width: 80%;
+	height: 100%;
 }
 .info{
 	background-color: #ffffff;
@@ -177,10 +184,11 @@ form input, textarea{
 	padding-left: 30px;
 }
 .news div{
-	border: 1px black solid;
+	border: 1px rgba(120, 121, 167, 1) solid;
+	border-radius: 10px;
 }
 .flash-news{
-	height: 300px;
+	height: 200px;
 	width: 300px;
 	background-color: #ffffff;
 }
@@ -199,8 +207,7 @@ form input, textarea{
 }
 .trust-indicator{
 	text-align: center;
-	padding: 0px 10%;
-	/*padding-top: 20px;*/
+	padding: 0 10%;
 	display: inline-block;
 }
 h3{
@@ -231,7 +238,7 @@ h3{
 	color: #5466EB;
 }
 .flash-news{
-	background-color: #ffffee;
+	background-color: #fff;
 }
 .flash-news p, .flash-news h3{
 	padding-left: 30px;

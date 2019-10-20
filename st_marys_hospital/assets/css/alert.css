@@ -1,0 +1,20 @@
+.alert{
+    color: #b71c1c;
+}
+
+.alert-success{
+    background: #e3f2fd;
+    color: #261aad;
+}
+
+.alert-danger{
+    background: #ffcdd2;
+    color: #9b0000;
+}
+
+.alert-success, .alert-danger{
+	width: 100%;
+	height: 40px;
+	padding-top: 20px;
+	border-radius: 2px;
+}

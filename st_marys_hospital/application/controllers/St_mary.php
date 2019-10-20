@@ -8,6 +8,7 @@ class St_mary extends CI_Controller
 
     public function index($value='')
     {
-        $this->load->view('home/home');
+		$data = $this->FetchDB->get_news();
+		$this->load->view('home/home', array('data' => $data));
     }
 }
