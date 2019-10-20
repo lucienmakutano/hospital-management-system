@@ -19,15 +19,23 @@
   	    <div class="login-border">
           		<div class="login-box">
           			<div class="login-left">
-                        <?= validation_errors() ?>
-                        <?= form_open('requests/login') ?>
+						<?php
+							if ($this->session->flashdata('message')){
+								echo "<p class='wy-alert wy-alert-danger'>".$this->session->flashdata('message')."</p>";
+							}
+						?>
+                        <?= form_open('requests/login_users') ?>
                       		<div class="form-group">
                       			<label>Email</label><br>
-                      			<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  required ><br><br>
+                      			<input autofocus type="email" name="email" class="form-control" placeholder="example@domain.com"  value="<?php echo set_value('email')?>" >
+								<?php form_error('email') ?>
+								<br><br>
                       		</div>
                   		    <div class="form-group">
                   			    <label>Password</label><br>
-                  				<input  type="Password" name="Password" class="form-control" placeholder="password"  required><br><br>
+                  				<input  type="password" name="password" class="form-control" placeholder="password">
+								<?php form_error('password') ?>
+								<br><br>
                   		    </div>
                             <button type="submit" class="btn btn-primary" id="log">login</button>
                         <?= form_close() ?>

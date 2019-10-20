@@ -7,7 +7,7 @@
 		<meta name="robots" content="index, nofollow" />
 		<link rel="stylesheet" type="text/css" href="assets/css/home.css">
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="assets/js/home.js"></script>
+		<script src="assets/js/admin.js"></script>
 		<title>home - st mary's hospital</title>
 	</head>
 

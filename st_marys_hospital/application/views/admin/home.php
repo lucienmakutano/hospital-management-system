@@ -17,7 +17,7 @@
         <li><a href="<?= site_url('admin/') ?>">Home</a></li>
 		<li><a href="<?= site_url('admin/addUser')?>">Add user</a></li>
         <li><a href="<?= site_url('admin/news') ?>">Add news</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="<?= site_url('requests/logout')?>">Logout</a></li>
     </ul>
     <?php endblock() ?>
     <?php startblock('content') ?>
@@ -33,168 +33,21 @@
 					<th>Phone Number</th>
 					<th>User Type</th>
 				</tr>
-				<tr>
-					<td>christian</td>
-					<td>maunga</td>
-					<td>2017-01-01</td>
-					<td>male</td>
-					<td>christian.m@gmail.com</td>
-					<td>0712000000</td>
-					<td>admin</td>
-				</tr>
-				<tr>
-					<td>kirtan</td>
-					<td>patel</td>
-					<td>2018-01-01</td>
-					<td>male</td>
-					<td>kirtan.p@gmail.com</td>
-					<td>0712300000</td>
-					<td>admin</td>
-				</tr>
-				<tr>
-					<td>Bill</td>
-					<td>Nyerere</td>
-					<td>2019-01-01</td>
-					<td>male</td>
-					<td>bill.n@gmail.com</td>
-					<td>0712340000</td>
-					<td>admin</td>
-				</tr>
-				<tr>
-					<td>john</td>
-					<td>smith</td>
-					<td>2018-01-01</td>
-					<td>male</td>
-					<td>j.smith@gmail.com</td>
-					<td>0710000000</td>
-					<td>nurse</td>
-				</tr>
-				<tr>
-					<td>ruth</td>
-					<td>trump</td>
-					<td>2017-01-01</td>
-					<td>female</td>
-					<td>ruth.t@gmail.com</td>
-					<td>0700000000</td>
-					<td>doctor</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
-				<tr>
-					<td>Adel</td>
-					<td>Noble</td>
-					<td>2019-05-01</td>
-					<td>female</td>
-					<td>adel.noble@gmail.com</td>
-					<td>0720000000</td>
-					<td>pharmacist</td>
-				</tr>
+				<?php if (isset($users)): ?>
+					<?php foreach ($users as $user): ?>
+						<tr>
+							<td><?php echo $user->fname ?></td>
+							<td><?php echo $user->lname  ?></td>
+							<td><?php echo $user->dob  ?></td>
+							<td><?php echo $user->gender  ?></td>
+							<td><?php echo $user->email  ?></td>
+							<td><?php echo $user->phone_number  ?></td>
+							<td><?php echo $user->user_type  ?></td>
+						</tr>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<h2>No records was found</h2>
+				<?php endif?>
 			</table>
 		</div>
     <?php endblock() ?>

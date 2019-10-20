@@ -47,16 +47,8 @@
     padding: .75rem 1.25rem;
     margin-bottom: -1px;
     background-color: #fff;
-    border: 1px solid rgba(0,0,0,.125);
-    border-right-color: rgba(0, 0, 0, 0.125);
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-bottom-color: rgba(0, 0, 0, 0.125);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-left-color: rgba(0, 0, 0, 0.125);
-    border-left-style: solid;
-    border-left-width: 1px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-top-color: rgba(0, 0, 0, .125);
 }
 
 /* unvisited link */

@@ -1,0 +1,45 @@
+*{
+	box-sizing: border-box;
+}
+
+.appointment-form{
+	padding: 2% 15%;
+}
+
+.appointment-form{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-row-gap: 20px;
+	grid-column-gap: 20px;
+}
+
+.appointment-form div{
+	width: 100%;
+}
+
+.appointment-form div{
+	background-color: #fff;
+	border: 1px solid rgba(104, 121, 176, 1);
+	border-radius: 10px;
+}
+
+.appointment-content{
+	text-align: center;
+}
+button{
+	background-color: rgba(104, 121, 176, .8);
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	transition: all 0.5s ease 0s;
+	padding: 5px 10px;
+	font-size: 1.15rem;
+	font-weight: 500;
+}
+
+button:hover{
+	background-color: rgba(104, 121, 176, 1);
+	color: #fff;
+	transition: all 0.5s ease 0s;
+	cursor: pointer;
+}

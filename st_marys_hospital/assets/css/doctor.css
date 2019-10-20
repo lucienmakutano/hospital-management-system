@@ -1,28 +1,22 @@
-#part1{
-	margin-left: 170px;
-	width: 400px;
+#ima{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20%, 40%));
+	grid-column-gap: 5%;
+}
 
+
+#part1{
+	width: 100%;
 }
 #part2{
-	width: 400px;
+	width: 100%;
 }
-#in{
-	font-size: 20px;
-	margin-right: 520px;
-	margin-left: 150px;
-	border: 1px solid white;
-	text-decoration-line: none;
-}
-#out{
+#in, #out{
 	font-size: 20px;
 	border: 1px solid white;
 	text-decoration-line: none;
 }
-#in:hover{
-	color: red;
-	border: 1px solid black;
-}
-#out:hover{
+#in:hover, #out:hover{
 	color: red;
 	border: 1px solid black;
 }

@@ -17,20 +17,22 @@
 	<li><a href="<?= site_url('doctor/')  ?>" class="link">Home</a></li>
 	<li><a href="<?= site_url('doctor/appointment') ?>" class="link">Appointments</a></li>
 	<li><a href="<?= site_url('doctor/prescription') ?>" class="link">Prescriptions</a><li>
-	<li><a href="#" class="link">Diagnosis</a></li>
-	<li><a href="#" class="link">Logout</a></li>
+	<li><a href="<?= site_url('requests/logout')?>" class="link">Logout</a></li>
 </ul>
 <?php endblock() ?>
 
 <?php startblock("content") ?>
-<div id="content">
-	<div id="ima">
-		<img id="part2"src="<?= base_url('assets/images/clockin.png') ?>">
-		<img id="part1"src="<?= base_url('assets/images/clockout.png') ?>">
+	<div id="content">
+		<div id="ima">
+			<div id="clock-in">
+				<img id="picture1" src="<?= base_url('assets/images/clockin.png') ?>" alt="">
+				<a href="#" id="in" >Clockin</a>
+			</div>
+			<div id="picture2">
+				<img id="part1" src="<?= base_url('assets/images/clockout.png') ?>" alt="">
+				<a  href="#" id="out" >Clockout</a>
+			</div>
+		</div>
 	</div>
-	<a href="#" id="in" >Clockin</a>
-	<a  href="#" id="out" >Clockout</a>
-
-</div>
 <?php endblock() ?>
 <?php end_extend() ?>

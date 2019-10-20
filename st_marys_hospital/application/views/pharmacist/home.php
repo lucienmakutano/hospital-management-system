@@ -18,6 +18,7 @@
 			<li><a>Home</a></li>
 			<li><a>View Prescriptions</a></li>
 			<li><a>Add Medicines</a></li>
+			<li><a href="<?= site_url('requests/logout')?>">Logout</a></li>
 		</ul>
     <?php endblock() ?>
 
@@ -31,49 +32,15 @@
 				<th>manufacturer</th>
 				<th>provider</th>
 			</tr>
+<!--			--><?php //foreach ($data as $dt): ?>
 			<tr>
 				<td>Acetaminophen</td>
 				<td>100</td>
 				<td>McNeil Consumer Healthcare</td>
 				<td>Health Plus</td>
 			</tr>
-			<tr>
-				<td>adderall</td>
-				<td>120</td>
-				<td>McNeil Consumer Healthcare</td>
-				<td>Health Forum</td>
-			</tr>
-			<tr>
-				<td>Acetaminophen</td>
-				<td>90</td>
-				<td>Shire Pharmaceuticals</td>
-				<td>Health Forum</td>
-			</tr>
-			<tr>
-				<td>Alprazolam</td>
-				<td>500</td>
-				<td>Pfizer</td>
-				<td>Sato innovation</td>
-			</tr>
-			<tr>
-				<td>Amitriptyline </td>
-				<td>100</td>
-				<td>Mylan Pharmaceuticals Inc</td>
-				<td>Sato innovation</td>
-			</tr>
-			<tr>
-				<td>Amitriptyline </td>
-				<td>1000</td>
-				<td>Mylan Pharmaceuticals Inc</td>
-				<td>Peak moments</td>
-			</tr>
-			<tr>
-				<td>Amitriptyline </td>
-				<td>100</td>
-				<td>Mylan Pharmaceuticals Inc</td>
-				<td>Peak moments</td>
-			</tr>
-		</table>
+<!--			--><?php //endforeach; ?>
+		</table> 
 	</div>
     <?php endblock() ?>
 <?php end_extend() ?>
