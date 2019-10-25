@@ -12,4 +12,14 @@ class WriteDB extends CI_Model
 			return "No data was passed";
 		}
 	}
+
+	function add_medicine($data){
+		$this->db->insert('medicine', $data);
+		return "the medicine was add successfully";
+	}
+
+	function add_provider($data){
+		$this->db->insert('provider', $data);
+		return "A new provider was add successfully";
+	}
 }

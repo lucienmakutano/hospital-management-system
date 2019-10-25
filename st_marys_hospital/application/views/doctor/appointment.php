@@ -14,7 +14,7 @@
 	<?php get_extended_block(); ?>
 <?php endblock() ?>
 <?php startblock('content') ?>
-
+	<h2 id="text">Appointments</h2>
 	<div class="appointment-form">
 		<?php if(isset($data)): ?>
 			<?php foreach ($data as $dt): ?>

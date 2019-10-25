@@ -13,7 +13,10 @@ class Login extends CI_Model{
 				$pwd = $this->encrypt->decode($row->password);
 
 				if ($pwd == $password){
-					$this->session->set_userdata(array('id' => $row->staff_id));
+					$this->session
+						->set_userdata(array('id' => $row->staff_id,
+							'firstName' =>$row->fname, 'lastName'=>$row->lname, 'userType' =>$row->user_type));
+
 					return $query->result();
 				}
 				else{
@@ -24,6 +27,5 @@ class Login extends CI_Model{
 		else{
 			return 'wrong email address';
 		}
-//		return $query->result();
 	}
 }

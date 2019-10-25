@@ -10,6 +10,9 @@ class Nurse extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('userType') !== "nurse"){
+			redirect(current_url());
+		}
 		if (!$this->session->userdata('id')){
 			redirect('welcome/login');
 		}

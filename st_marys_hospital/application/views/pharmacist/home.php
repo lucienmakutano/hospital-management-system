@@ -8,16 +8,17 @@
     <?php endblock() ?>
 
     <?php startblock("banner") ?>
-    <p>Bill<br><small>Pharmacist</small></p>
+	<p><?php echo $this->session->userdata('firstName') . " " . $this->session->userdata('lastName')?><br><small>Pharmacist</small></p>
 	<?php get_extended_block();?>
     <?php endblock() ?>
 
     <?php startblock("menu") ?>
 		<ul>
 			<li id="profile-picture"><a><img src="<?= base_url('assets/images/doc.png')?>" alt="profile picture" width="200px"></a></li>
-			<li><a>Home</a></li>
-			<li><a>View Prescriptions</a></li>
-			<li><a>Add Medicines</a></li>
+			<li><a href="<?= site_url('pharmacist') ?>">Home</a></li>
+			<li><a href="<?= site_url('pharmacist/view_prescription') ?>">View Prescriptions</a></li>
+			<li><a href="<?= site_url('pharmacist/addMedicine') ?>">Add Medicines</a></li>
+			<li><a href="<?= site_url('pharmacist/provider') ?>">Add Provider</a></li>
 			<li><a href="<?= site_url('requests/logout')?>">Logout</a></li>
 		</ul>
     <?php endblock() ?>
@@ -29,17 +30,19 @@
 			<tr>
 				<th>Name</th>
 				<th>quantity</th>
-				<th>manufacturer</th>
+				<th>Price per tablet</th>
 				<th>provider</th>
 			</tr>
-<!--			--><?php //foreach ($data as $dt): ?>
-			<tr>
-				<td>Acetaminophen</td>
-				<td>100</td>
-				<td>McNeil Consumer Healthcare</td>
-				<td>Health Plus</td>
-			</tr>
-<!--			--><?php //endforeach; ?>
+			<?php if (isset($medicines)): ?>
+				<?php foreach ($medicines as $medicine): ?>
+					<tr>
+						<td> <?php echo $medicine->medicine_name ?> </td>
+						<td> <?php echo $medicine->quantity ?> </td>
+						<td> <?php echo $medicine->price_per_tablet ?> </td>
+						<td> <?php echo $medicine->provider ?> </td>
+					</tr>
+				<?php endforeach; ?>
+			<?php endif;?>
 		</table> 
 	</div>
     <?php endblock() ?>

@@ -4,9 +4,9 @@
 <?php endblock() ?>
 
 <?php startblock('extra_head') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/nursePatient.css') ?>">
-<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
-<script src="<?= base_url('assets/js/admin.js')?>"></script>
+	<link rel="stylesheet" href="<?= base_url('assets/css/nursePatient.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
+	<script src="<?= base_url('assets/js/admin.js')?>"></script>
 <?php endblock() ?>
 
 <?php startblock('banner') ?>
@@ -47,6 +47,10 @@
 			<label> Phone number
 				<input type="number" value="<?php echo set_value('phone-number') ?>" name="phone-number">
 				<?php echo form_error('phone-number', '<div class="alert">', '</div>')?>
+			</label>
+			<label> Profile picture
+				<input type="file" value="<?php echo set_value('profile-picture') ?>" name="profile-picture">
+				<?php echo form_error('profile-picture', '<div class="alert">', '</div>')?>
 			</label>
 			<label> User type
 				<select id="user-type" value="<?php echo set_value('user-type') ?>" name="user-type">

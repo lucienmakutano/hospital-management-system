@@ -9,7 +9,7 @@
     <?php endblock() ?>
 
     <?php startblock("banner") ?>
-    <p>Chris <br> <small>nurse</small> </p>
+	<p><?php echo $this->session->userdata('firstName') . " " . $this->session->userdata('lastName')?><br> <small>nurse</small> </p>
 	<?php get_extended_block();?>
     <?php endblock() ?>
 

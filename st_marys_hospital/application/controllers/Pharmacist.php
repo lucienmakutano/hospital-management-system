@@ -10,6 +10,10 @@ class Pharmacist extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('userType') !== "pharmacist"){
+			redirect(current_url());
+		}
+
 		if (!$this->session->userdata('id')){
 			redirect('welcome/login');
 		}
@@ -17,6 +21,53 @@ class Pharmacist extends CI_Controller
 
     public function index($value='')
     {
-        $this->load->view('pharmacist/home');
+		$medicines = $this->FetchDB->retrieve_medicines();
+        $this->load->view('pharmacist/home', array('medicines' => $medicines));
     }
+
+	public function addMedicine($value='')
+	{
+		$data = $this->FetchDB->retrieve_providers();
+		$this->load->view('pharmacist/addMedicine', array('providers' => $data));
+	}
+
+	public function view_prescription($value=''){
+		$data = array(
+			"patient_1" => array(
+				"dosage" => 10,
+				"medicine" => "paracetamol",
+				"citation_card" => "123456"
+			),
+			"patient_2" => array(
+				"dosage" => 10,
+				"medicine" => "paracetamol",
+				"citation_card" => "123456"
+			),
+			"patient_3" => array(
+				"dosage" => 10,
+				"medicine" => "paracetamol",
+				"citation_card" => "123456"
+			),
+			"patient_4" => array(
+				"dosage" => 10,
+				"medicine" => "paracetamol",
+				"citation_card" => "123456"
+			),
+			"patient_5" => array(
+				"dosage" => 10,
+				"medicine" => "paracetamol",
+				"citation_card" => "123456"
+			),
+			"patient_6" => array(
+				"dosage" => 10,
+				"medicine" => "paracetamol",
+				"citation_card" => "123456"
+			)
+		);
+		$this->load->view('pharmacist/viewPrescription', array('data' => $data));
+	}
+
+	public function provider(){
+		$this->load->view('pharmacist/provider');
+	}
 }

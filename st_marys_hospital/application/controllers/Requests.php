@@ -28,7 +28,7 @@ class Requests extends CI_Controller
 							redirect('admin');
 							break;
 						}elseif ($results->user_type == 'doctor'){
-							redirect('doctor');
+							redirect('doctor/appointment');
 							break;
 						}elseif ($results->user_type == 'pharmacist'){
 							redirect('pharmacist');
@@ -116,10 +116,50 @@ class Requests extends CI_Controller
         }
     }
 
-    public function add_user($value='')
+    public function add_medicine($value='')
     {
-        //body
+		$this->form_validation->set_rules('medicine-name', "Medicine name", "required|alpha|max_length[50]");
+		$this->form_validation->set_rules('quantity', 'Quantity', "required|numeric");
+		$this->form_validation->set_rules('price', 'Price', "required|numeric");
+		$this->form_validation->set_rules('provider', 'Provider', "required");
+
+		if($this->form_validation->run()){
+			$data = array(
+				'medicine_name' => $this->input->post('medicine-name'),
+				'quantity' => $this->input->post('quantity'),
+				'price_per_tablet' => $this->input->post('price'),
+				'provider' => $this->input->post('provider')
+			);
+
+			$this->WriteDB->add_medicine($data);
+			redirect('pharmacist');
+		}
+		else{
+			$this->load->view('pharmacist/addMedicine');
+		}
     }
+
+    public function add_provider(){
+		$this->form_validation->set_rules('company-name', "Company name", "required|is_unique[provider.name]");
+		$this->form_validation->set_rules('address', 'Address', "required");
+		$this->form_validation->set_rules('email', 'Email', "required|valid_email");
+		$this->form_validation->set_rules('phone', 'Telephone number', "required|numeric|exact_length[10]");
+
+		if($this->form_validation->run()){
+			$data = array(
+				'name' => $this->input->post('company-name'),
+				'address' => $this->input->post('address'),
+				'email' => $this->input->post('email'),
+				'phone_number' => $this->input->post('phone')
+			);
+
+			$this->WriteDB->add_provider($data);
+			redirect('pharmacist');
+		}
+		else{
+			$this->load->view('pharmacist/provider');
+		}
+	}
 
     public function newUser($value=''){
 

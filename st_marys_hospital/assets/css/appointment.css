@@ -5,7 +5,10 @@
 .appointment-form{
 	padding: 2% 15%;
 }
-
+#text{
+	text-align: center;
+	color: rgba(104, 121, 167, 1);
+}
 .appointment-form{
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

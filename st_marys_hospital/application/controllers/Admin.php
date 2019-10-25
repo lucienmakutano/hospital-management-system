@@ -9,6 +9,10 @@ class Admin extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('userType') !== "admin"){
+			redirect(current_url());
+		}
+
 		if (!$this->session->userdata('id')){
 			redirect('welcome/login');
 		}
@@ -16,7 +20,7 @@ class Admin extends CI_Controller
 
 	public function index($value='')
     {
-		$users = $this->RegisterUser->retrieve_users();
+		$users = $this->FetchDB->retrieve_users();
 		$this->load->view('admin/home', array('users' => $users));
     }
 

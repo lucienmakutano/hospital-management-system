@@ -14,10 +14,4 @@ class RegisterUser extends CI_Model{
 		}
 		return $this->db->insert_id();
 	}
-
-	function retrieve_users(){
-		$query = $this->db->get('staff');
-
-		return $query->result();
-	}
 }

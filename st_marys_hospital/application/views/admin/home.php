@@ -8,7 +8,7 @@
     <?php endblock() ?>
 
     <?php startblock('banner') ?>
-    <p>lucien<br><small>admin</small></p>
+	<p><?php echo $this->session->userdata('firstName') . " " . $this->session->userdata('lastName')?><br><small>admin</small></p>
 	<?php get_extended_block();?>
     <?php endblock() ?>
     <?php startblock('menu') ?>

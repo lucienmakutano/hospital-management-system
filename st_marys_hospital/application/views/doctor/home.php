@@ -8,14 +8,14 @@
 <?php endblock() ?>
 
 <?php startblock("banner") ?>
-<p>DR. John Doe<br><small>SURGEON</small></p>
+<p><?php echo $this->session->userdata('firstName') . "  " . $this->session->userdata('lastName')?><br><small>SURGEON</small></p>
 <?php endblock() ?>
 
 <?php startblock("menu") ?>
 <ul>
 	<li id="profile-picture"><a href=""><img width="100%" src="<?= base_url('assets/images/doc.png')?>"></a></li>
-	<li><a href="<?= site_url('doctor/')  ?>" class="link">Home</a></li>
-	<li><a href="<?= site_url('doctor/appointment') ?>" class="link">Appointments</a></li>
+<!--	<li><a href="--><?//= site_url('doctor/')  ?><!--" class="link">Home</a></li>-->
+	<li><a href="<?= site_url('doctor/appointment') ?>" class="link">Home</a></li>
 	<li><a href="<?= site_url('doctor/prescription') ?>" class="link">Prescriptions</a><li>
 	<li><a href="<?= site_url('requests/logout')?>" class="link">Logout</a></li>
 </ul>
