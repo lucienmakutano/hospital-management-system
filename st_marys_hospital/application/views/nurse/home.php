@@ -5,6 +5,7 @@
 
     <?php startblock("extra_head") ?>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/adminhome.css')?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/nurseHome.css')?>">
     <?php endblock() ?>
 
@@ -15,12 +16,11 @@
 
     <?php startblock("menu") ?>
     <ul>
-		<li id="profile-picture"><a href="#"><img src="<?php echo base_url('assets/images/user.png') ?>" alt="profile picture"> </a> </li>
+		<li id="profile-picture"><a href="#"><img src="<?php echo $this->session->userdata('profile picture') ?>" alt="profile picture"> </a> </li>
 		<li><a href="<?= site_url('nurse/') ?>">Home</a> </li>
-		<li><a href="<?= site_url('nurse/newPatient') ?>">Add patient</a> </li>
-		<li><a href="<?= site_url('nurse/assignRoom') ?>">Assign wards</a> </li>
+		<li><a href="<?= site_url('nurse/newPatient') ?>">Add patient</a></li>
+		<li><a href="<?= site_url('nurse/assignRoom') ?>">Assign wards</a></li>
 		<li><a href="<?= site_url('nurse/newAppointment') ?>">Book appointment</a> </li>
-		<li><a href="<?= site_url('requests/logout')?>">Logout</a></li>
     </ul>
     <?php endblock() ?>
 

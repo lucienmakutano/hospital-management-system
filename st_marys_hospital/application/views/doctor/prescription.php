@@ -3,7 +3,8 @@
 <?php endblock() ?>
 
 <?php startblock('extra_head') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/Booking.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/Booking.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
 <?php endblock() ?>
 
 <?php startblock('banner') ?>

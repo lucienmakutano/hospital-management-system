@@ -1,8 +1,9 @@
-<?php extend('admin/home.php') ?>
+<?php extend('nurse/home.php') ?>
 <?php startblock('title') ?>
 <?php endblock() ?>
 
 <?php startblock('extra_head') ?>
+<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/nursePatient.css') ?>">
 <?php endblock() ?>
 

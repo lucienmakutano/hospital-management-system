@@ -15,7 +15,8 @@ class Login extends CI_Model{
 				if ($pwd == $password){
 					$this->session
 						->set_userdata(array('id' => $row->staff_id,
-							'firstName' =>$row->fname, 'lastName'=>$row->lname, 'userType' =>$row->user_type));
+							'firstName' =>$row->fname, 'lastName'=>$row->lname,
+							'userType' =>$row->user_type, 'profile picture' => $row->profile_picture));
 
 					return $query->result();
 				}

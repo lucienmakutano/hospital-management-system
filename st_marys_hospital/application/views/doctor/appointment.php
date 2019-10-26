@@ -4,6 +4,7 @@
 
 <?php startblock('extra_head') ?>
 <link rel="stylesheet" href="<?= base_url('assets/css/appointment.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
 <?php endblock() ?>
 
 <?php startblock('banner') ?>

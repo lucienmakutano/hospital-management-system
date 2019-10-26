@@ -19,35 +19,35 @@ class Requests extends CI_Controller
             $email = $this->input->post('email');
             $password = $this->input->post('password');
 
-        	$result = $this->Login->log_in($email, $password);
+        	$results = $this->Login->log_in($email, $password);
 
-        	if (is_array($result)){
-        		if (isset($result)){
-        			foreach ($result as $results){
-						if ($results->user_type == 'admin'){
+        	if (is_array($results)){
+        		if (isset($results)){
+        			foreach ($results as $result){
+						if ($result->user_type == 'admin'){
 							redirect('admin');
 							break;
-						}elseif ($results->user_type == 'doctor'){
+						}elseif ($result->user_type == 'doctor'){
 							redirect('doctor/appointment');
 							break;
-						}elseif ($results->user_type == 'pharmacist'){
+						}elseif ($result->user_type == 'pharmacist'){
 							redirect('pharmacist');
 							break;
 						}
-						elseif ($results->user_type == 'nurse'){
+						elseif ($result->user_type == 'nurse'){
 							redirect('nurse');
 							break;
 						}
 					}
 				}
         		else{
-					$this->session->set_flashdata('message', $result);
+					$this->session->set_flashdata('message', $results);
 					redirect('welcome/login');
 				}
 			}
         	else{
-        		if ($result){
-					$this->session->set_flashdata('message', $result);
+        		if ($results){
+					$this->session->set_flashdata('message', $results);
 					redirect('welcome/login');
 				}
 			}
@@ -163,6 +163,14 @@ class Requests extends CI_Controller
 
     public function newUser($value=''){
 
+		$config = array(
+			'upload_path' => './uploads',
+			'allowed_types' => "png|jpg|gif|jpeg|svg"
+		);
+
+		$this->load->library('upload', $config);
+
+		$this->form_validation->set_rules('profile-picture', 'Profile Picture');
 		$this->form_validation->set_rules('first-name', 'First name', "required|alpha|max_length[30]");
 		$this->form_validation->set_rules('last-name', 'Last name', "required|alpha|max_length[30]");
 		$this->form_validation->set_rules('dob', 'Date of birth', "required");
@@ -173,8 +181,11 @@ class Requests extends CI_Controller
 		$this->form_validation->set_rules('password', 'Password',"required|alpha_numeric|min_length[8]");
 		$this->form_validation->set_rules('speciality', 'Speciality');
 
-		if ($this->form_validation->run()) {
+
+		if ($this->form_validation->run() && $this->upload->do_upload('profile-picture')) {
 			$verification_key = md5(rand());
+			$info = $this->upload->data();
+
 			$doc_speciality = array(
 				'speciality' => $this->input->post('specialities')
 			);
@@ -185,6 +196,7 @@ class Requests extends CI_Controller
 				'gender' => $this->input->post('gender'),
 				'email' => $this->input->post('email'),
 				'phone_number' => $this->input->post('phone-number'),
+				'profile_picture' => base_url("uploads/" . $info['raw_name'] . $info['file_ext']),
 				'user_type' => $this->input->post('user-type'),
 				'password' => $this->encrypt->encode($this->input->post('password')),
 				'verification_key' => $verification_key

@@ -3,7 +3,8 @@
 <?php endblock() ?>
 
 <?php startblock('extra_head') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/nursePatient.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/nursePatient.css') ?>">
 <?php endblock() ?>
 
 <?php startblock('banner') ?>

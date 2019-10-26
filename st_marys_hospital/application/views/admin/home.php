@@ -14,11 +14,10 @@
     <?php startblock('menu') ?>
 
     <ul>
-        <li id="profile-picture"><a href="#"><img src="<?= base_url('assets/images/user.png')?>" alt="profile picture"></a></li>
+        <li id="profile-picture"><a href="#"><img src="<?= $this->session->userdata('profile picture')?>" alt="profile picture"></a></li>
         <li><a href="<?= site_url('admin/') ?>">Home</a></li>
 		<li><a href="<?= site_url('admin/addUser')?>">Add user</a></li>
         <li><a href="<?= site_url('admin/news') ?>">Add news</a></li>
-        <li><a href="<?= site_url('requests/logout')?>">Logout</a></li>
     </ul>
     <?php endblock() ?>
     <?php startblock('content') ?>

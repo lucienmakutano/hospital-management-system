@@ -23,7 +23,7 @@
 
 		<h2>New User</h2>
 		<?php $attributes = array('id' => 'form'); ?>
-		<?= form_open('requests/newUser', $attributes) ?>
+		<?= form_open_multipart('requests/newUser', $attributes) ?>
 			<label> First name
 				<input type="text" value="<?php echo set_value('first-name') ?>" name="first-name">
 				<?php echo form_error('first-name', '<div class="alert">', '</div>')?>

@@ -5,6 +5,7 @@
 
     <?php startblock("extra_head") ?>
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/adminhome.css')?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/avatar.css') ?>">
     <?php endblock() ?>
 
     <?php startblock("banner") ?>
@@ -14,12 +15,11 @@
 
     <?php startblock("menu") ?>
 		<ul>
-			<li id="profile-picture"><a><img src="<?= base_url('assets/images/doc.png')?>" alt="profile picture" width="200px"></a></li>
+			<li id="profile-picture"><a><img src="<?= $this->session->userdata('profile picture')?>" alt="profile picture"></a></li>
 			<li><a href="<?= site_url('pharmacist') ?>">Home</a></li>
 			<li><a href="<?= site_url('pharmacist/view_prescription') ?>">View Prescriptions</a></li>
 			<li><a href="<?= site_url('pharmacist/addMedicine') ?>">Add Medicines</a></li>
 			<li><a href="<?= site_url('pharmacist/provider') ?>">Add Provider</a></li>
-			<li><a href="<?= site_url('requests/logout')?>">Logout</a></li>
 		</ul>
     <?php endblock() ?>
 
