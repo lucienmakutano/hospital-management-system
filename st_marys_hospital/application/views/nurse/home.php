@@ -19,8 +19,10 @@
 		<li id="profile-picture"><a href="#"><img src="<?php echo $this->session->userdata('profile picture') ?>" alt="profile picture"> </a> </li>
 		<li><a href="<?= site_url('nurse/') ?>">Home</a> </li>
 		<li><a href="<?= site_url('nurse/newPatient') ?>">Add patient</a></li>
+		<li><a href="<?= site_url('nurse/diagnosis') ?>">Diagnosis results</a></li>
+		<li><a href="<?= site_url('nurse/newAppointment') ?>">Book appointment</a></li>
 		<li><a href="<?= site_url('nurse/assignRoom') ?>">Assign wards</a></li>
-		<li><a href="<?= site_url('nurse/newAppointment') ?>">Book appointment</a> </li>
+		<li><a href="<?= site_url('nurse/add_room')?>">Add room</a></li>
     </ul>
     <?php endblock() ?>
 

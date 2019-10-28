@@ -23,4 +23,9 @@ class FetchDB extends CI_Model
 		$query = $this->db->get('medicine');
 		return $query->result();
 	}
+
+	function get_user_detail($user_id){
+		$query = $this->db->get_where('staff', array('staff_id'=>$user_id));
+		return $query->result();
+	}
 }

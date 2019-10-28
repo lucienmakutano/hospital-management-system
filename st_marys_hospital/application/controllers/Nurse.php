@@ -38,4 +38,33 @@ class Nurse extends CI_Controller
     {
         $this->load->view('nurse/assignRoom');
     }
+
+	public function add_room($value='')
+	{
+		$this->load->view('nurse/room');
+	}
+
+	public function diagnosis($value='')
+	{
+		$this->load->view('nurse/diagnosis');
+	}
+
+	function new_room($value=''){
+		$this->form_validation->set_rules('room-type', 'Room type', "required");
+		$this->form_validation->set_rules('number-of-beds', 'Number of beds',"required");
+		$this->form_validation->set_rules('price','Price','required|numeric');
+
+		if ($this->form_validation->run()) {
+			$rooms = array(
+				'type' => $this->input->post('room-type'),
+				'number_of_beds' => $this->input->post('number-of-beds'),
+				'price' => $this->input->post('price')
+			);
+			$this->WriteDB->add_room($rooms);
+			redirect('nurse');
+
+		} else {
+			$this->load->view('nurse/room');
+		}
+	}
 }

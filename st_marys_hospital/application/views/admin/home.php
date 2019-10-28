@@ -37,6 +37,7 @@
 					<th>Email</th>
 					<th>Phone Number</th>
 					<th>User Type</th>
+					<th>manage user</th>
 				</tr>
 				<?php if (isset($users)): ?>
 					<?php foreach ($users as $user): ?>
@@ -48,6 +49,11 @@
 							<td><?php echo $user->email  ?></td>
 							<td><?php echo $user->phone_number  ?></td>
 							<td><?php echo $user->user_type  ?></td>
+							<td>
+								<a href="<?php echo site_url("admin/edit_user/$user->staff_id") ?>" id="edit-btn">edit</a>
+								<a type="submit" href="<?php echo site_url("admin/delete_user/$user->staff_id") ?>"
+								   onclick="return confirm('are you sure you want to delete <?php echo $user->fname ?> ?')" id="delete-btn">delete</a>
+							</td>
 						</tr>
 					<?php endforeach; ?>
 				<?php else: ?>

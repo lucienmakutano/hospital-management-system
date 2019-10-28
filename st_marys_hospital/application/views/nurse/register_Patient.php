@@ -17,29 +17,30 @@
 <?php startblock('content') ?>
 <div class="patient-form">
     <h2>New Patient</h2>
-	<?= validation_errors()?>
-
 	<?= form_open('requests/add_patient') ?>
     	<label> First name
-    		<input type="text" required>
+    		<input type="text" name="fname" value="<?php echo set_value('fname') ?>">
+				<?php echo form_error('fname', '<div class=alert>', '</div>'); ?>
     	</label>
     	<label> Last name
-    		<input type="text" required>
+    		<input type="text" name="lname" value="<?php echo set_value('lname')?>">
+				<?php echo form_error('lname', '<div class=alert>', '</div>'); ?>
     	</label>
     	<label> Date of birth
-    		<input type="date" required>
+    		<input type="date" name="dob" value="<?php echo set_value('dob')?>">
+				<?php echo form_error('dob', '<div class=alert>', '</div>'); ?>
     	</label>
     	<label> Gender
-    		<input type="text" required>
-    	</label>
-    	<label> Email
-    		<input type="email" required>
+    		<input type="text" name="gender" value="<?php echo set_value('gender')?>">
+				<?php echo form_error('gender', '<div class=alert>', '</div>'); ?>
     	</label>
     	<label> Phone number
-    		<input type="number" required>
+    		<input type="number"name="phone" value="<?php echo set_value('phone')?>">
+				<?php echo form_error('phone', '<div class=alert>', '</div>'); ?>
     	</label>
         <label> Address
-    		<input type="text" required>
+    		<input type="text" name="address" value="<?php echo set_value('address')?>">
+				<?php echo form_error('address', '<div class=alert>', '</div>'); ?>
     	</label>
         <input type="submit" name="btn" class="ptn-btn" value="Save">
         <input type="reset" name="btn" class="ptn-btn" value="Clear">

@@ -24,3 +24,33 @@ h3{
 .responsive-table{
 	overflow-x: auto;
 }
+#edit-btn,
+#delete-btn{
+	height: 80px;
+	width: 100%;
+	border: 1px solid #FFEB3B;
+	color: #fff;
+	border-radius: 5px;
+	transition: all .5s ease-in-out 0s;
+	text-decoration: none;
+}
+#delete-btn:hover{
+	cursor: pointer;
+	color: #B71C1C;
+	background: #fff;
+	transition: all .5s ease-in-out 0s;
+	border: 1px solid #B71C1C;
+}
+#edit-btn:hover{
+	cursor: pointer;
+	color: #856404;
+	background: #fff;
+	transition: all .5s ease-in-out 0s;
+	border: 1px solid #856404;
+}
+#edit-btn{
+	background: #856404;
+}
+#delete-btn{
+	background: #B71C1C;
+}

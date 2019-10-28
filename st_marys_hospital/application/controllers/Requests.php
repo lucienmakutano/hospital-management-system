@@ -8,6 +8,13 @@ class Requests extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
+		$config = array(
+			'upload_path' => './uploads',
+			'allowed_types' => "png|jpg|gif|jpeg|svg"
+		);
+
+		$this->load->library('upload', $config);
 	}
 
 	public function login_users($value='')
@@ -76,17 +83,72 @@ class Requests extends CI_Controller
 
     public function book_appointment($value='')
     {
-        //body
+      $this->form_validation->set_rules('card',"Patient's citation card ","required|numeric");
+			$this->form_validation->set_rules('id',"Doctor's ID","required|numeric");
+			$this->form_validation->set_rules('date',"Appointment Date","required");
+			$this->form_validation->set_rules('time',"Appointment Time",'required');
+			$this->form_validation->set_rules('symptom','Brief summary of the symptom ','required');
+			if ($this->form_validation->run()) {
+				$appointment = array(
+					'doctor_id' => $this->input->post('id'),
+					'Citation_card' => $this->input->post('card'),
+					'date' => $this->input->post('date'),
+					'time' => $this->input->post('time'),
+					'summary' => $this->input->post('symptom')
+				);
+				$this->WriteDB->book_appointment($appointment);
+				redirect('nurse');
+			} else {
+				$this->load->view('nurse/appointment_form');
+			}
+
     }
 
     public function assign_room($value='')
     {
-        //body
+			$this->form_validation->set_rules("card","Patient's citation card",'required|numeric');
+			$this->form_validation->set_rules('number'," Room number",'required|numeric');
+
+
+			if ($this->form_validation->run()) {
+				$room = array(
+					'patient_id' => $this->input->post('card'),
+					'room_id' => $this->input->post('number')
+				);
+				$this->WriteDB->assign_room($room);
+				redirect('nurse');
+			} else {
+				$this->load->view('nurse/assignRoom');
+			}
+
+
     }
 
     public function add_patient($value='')
     {
-        //body
+        $this->form_validation->set_rules('fname', 'Firtst name', "required|alpha");
+				$this->form_validation->set_rules('lname', 'Last name', "required|alpha");
+				$this->form_validation->set_rules('dob', 'Date of birth', "required");
+				$this->form_validation->set_rules('gender', 'Gender', "required|alpha|max_length[6]|in_list[male, female]");
+				$this->form_validation->set_rules('phone', 'Telephone number', "required|numeric");
+				$this->form_validation->set_rules('address', 'Address', "required");
+
+				if ($this->form_validation->run()) {
+					$patient_info = array(
+						'fname' => $this->input->post('fname'),
+						'lname' => $this->input->post('lname'),
+						'DOB' => $this->input->post('dob'),
+						'gender' => $this->input->post('gender'),
+						'phonenumber' => $this->input->post('phone'),
+						'address' => $this->input->post('address')
+					);
+
+					$this->WriteDB->add_patient($patient_info);
+					redirect('nurse');
+
+				} else {
+					$this->load->view('nurse/register_patient');
+				}
     }
 
     public function new_prescription($value='')
@@ -118,7 +180,7 @@ class Requests extends CI_Controller
 
     public function add_medicine($value='')
     {
-		$this->form_validation->set_rules('medicine-name', "Medicine name", "required|alpha|max_length[50]");
+		$this->form_validation->set_rules('medicine-name', "Medicine name", "required|max_length[50]");
 		$this->form_validation->set_rules('quantity', 'Quantity', "required|numeric");
 		$this->form_validation->set_rules('price', 'Price', "required|numeric");
 		$this->form_validation->set_rules('provider', 'Provider', "required");
@@ -162,14 +224,6 @@ class Requests extends CI_Controller
 	}
 
     public function newUser($value=''){
-
-		$config = array(
-			'upload_path' => './uploads',
-			'allowed_types' => "png|jpg|gif|jpeg|svg"
-		);
-
-		$this->load->library('upload', $config);
-
 		$this->form_validation->set_rules('profile-picture', 'Profile Picture');
 		$this->form_validation->set_rules('first-name', 'First name', "required|alpha|max_length[30]");
 		$this->form_validation->set_rules('last-name', 'Last name', "required|alpha|max_length[30]");
@@ -216,4 +270,12 @@ class Requests extends CI_Controller
 			$this->load->view('admin/addUser');
 		}
 	}
+}
+
+function diagnosis($value=''){
+	//
+}
+function update_user($user_id){
+
+
 }

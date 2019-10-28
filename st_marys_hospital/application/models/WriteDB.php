@@ -22,4 +22,25 @@ class WriteDB extends CI_Model
 		$this->db->insert('provider', $data);
 		return "A new provider was add successfully";
 	}
+
+	function add_patient($data){
+		$this->db->insert('patient', $data);
+		return "A new patient was add successfully";
+	}
+
+	public function book_appointment($data)
+	{
+		$this->db->insert('appointment',$data);
+		return "A new appointment was add successfully";
+	}
+
+	public function assign_room($data){
+		$this->db->insert('patient_room',$data);
+		return "A new patient was assign successfully";
+	}
+
+	public function add_room($data){
+		$this->db->insert('room', $data);
+		return "A new patient was assign successfully";
+	}
 }

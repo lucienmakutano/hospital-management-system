@@ -21,18 +21,12 @@
 
 	<?= form_open('requests/assign_room') ?>
     	<label> Patient's citation card
-    		<input type="text" required>
+    		<input type="text" name="card">
     	</label>
     	<label> Room number
-    		<input type="text" required>
+    		<input type="text" name="number">
     	</label>
-        <label> Type of room
-    		<select class="" name="">
-                <option value="General" selected>Select</option>
-                <option value="General">General</option>
-                <option value="Deluxe">Deluxe</option>
-            </select>
-    	</label>
+
         <input type="submit" name="btn" class="ptn-btn" value="Assign">
 	<?= form_close()?>
 </div>

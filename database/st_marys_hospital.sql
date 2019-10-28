@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2019 at 05:45 PM
+-- Generation Time: Oct 28, 2019 at 06:22 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -30,28 +30,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointment` (
   `appointment_id` int(11) NOT NULL,
-  `Citation_card` varchar(50) NOT NULL,
-  `doctor_id` varchar(50) NOT NULL,
+  `Citation_card` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `time` time(6) NOT NULL,
   `summary` varchar(255) NOT NULL,
   `sorted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `doctor`
+-- Dumping data for table `appointment`
 --
 
-CREATE TABLE `doctor` (
-  `doctor_id` varchar(10) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `Speciality` text NOT NULL,
-  `phone_number` int(10) NOT NULL,
-  `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `appointment` (`appointment_id`, `Citation_card`, `doctor_id`, `date`, `time`, `summary`, `sorted`) VALUES
+(2, 1, 3, '2019-10-10', '03:03:00.000000', 'dfdfffdf', 0),
+(3, 2, 3, '2019-10-27', '11:06:00.000000', 'sdfghjk', 0),
+(4, 1, 3, '2019-10-27', '17:56:00.000000', 'this is the test appointment', 0);
 
 -- --------------------------------------------------------
 
@@ -75,7 +69,8 @@ INSERT INTO `medicine` (`medicine_id`, `medicine_name`, `quantity`, `price_per_t
 (2, 'paracetamol', 100, 10, 'twist inc.'),
 (3, 'paracetamol', 400, 20, 'lucien org'),
 (4, 'cypro', 220, 40, 'twist inc.'),
-(5, 'apirine', 500, 50, 'lucien org');
+(5, 'apirine', 500, 50, 'lucien org'),
+(7, 'shalsip tz', 500, 50, 'shalina');
 
 -- --------------------------------------------------------
 
@@ -112,15 +107,42 @@ INSERT INTO `news` (`news_id`, `title`, `message`, `date`) VALUES
 --
 
 CREATE TABLE `patient` (
-  `Citation_card` varchar(50) NOT NULL,
+  `Citation_card` int(11) NOT NULL,
   `fname` text NOT NULL,
   `lname` text NOT NULL,
   `DOB` date NOT NULL,
   `gender` text NOT NULL,
-  `email` varchar(50) NOT NULL,
   `phonenumber` int(10) NOT NULL,
   `address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`Citation_card`, `fname`, `lname`, `DOB`, `gender`, `phonenumber`, `address`) VALUES
+(1, 'luciien', 'maku', '2019-10-26', 'male', 123456, 'nairobi'),
+(2, 'luciien', 'maku', '2019-10-26', 'male', 123456, 'nairobi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_room`
+--
+
+CREATE TABLE `patient_room` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `patient_room`
+--
+
+INSERT INTO `patient_room` (`id`, `patient_id`, `room_id`, `date`) VALUES
+(2, 1, 1, '2019-10-27 17:33:17');
 
 -- --------------------------------------------------------
 
@@ -132,7 +154,7 @@ CREATE TABLE `prescriptions` (
   `prescription_id` varchar(100) NOT NULL,
   `dosage` varchar(10) NOT NULL,
   `doctor_id` varchar(50) NOT NULL,
-  `Citation_card` varchar(50) NOT NULL,
+  `Citation_card` int(11) NOT NULL,
   `medicine_id` int(11) NOT NULL,
   `issued_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `sorted` tinyint(1) NOT NULL DEFAULT 0
@@ -158,7 +180,8 @@ CREATE TABLE `provider` (
 
 INSERT INTO `provider` (`provider_id`, `name`, `address`, `email`, `phone_number`) VALUES
 (1, 'twist inc.', 'nairobi kenya', 'lucien.programmer@gmail.com', 713125823),
-(2, 'lucien org', 'congo kinshasa', 'lucien@org.cd', 713125823);
+(2, 'lucien org', 'congo kinshasa', 'lucien@org.cd', 713125823),
+(3, 'shalina', 'bukavu,  DRC', 'shaline@shal.cs', 999999999);
 
 -- --------------------------------------------------------
 
@@ -167,10 +190,19 @@ INSERT INTO `provider` (`provider_id`, `name`, `address`, `email`, `phone_number
 --
 
 CREATE TABLE `room` (
-  `room_id` varchar(20) NOT NULL,
+  `room_number` int(11) NOT NULL,
   `type` text NOT NULL,
-  `number_of_beds` int(20) NOT NULL
+  `number_of_beds` int(20) NOT NULL,
+  `price` int(11) NOT NULL,
+  `is_available` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`room_number`, `type`, `number_of_beds`, `price`, `is_available`) VALUES
+(1, 'luxury', 1, 14000, 1);
 
 -- --------------------------------------------------------
 
@@ -222,8 +254,7 @@ INSERT INTO `staff` (`staff_id`, `fname`, `lname`, `dob`, `gender`, `email`, `ph
 (5, 'christian', 'maunga', '2019-10-26', 'male', 'christian@gmail.com', 711000000, 'http://localhost/st_marys_hospital/uploads/person-avatar.png', 'nurse', 'DT5WcFN1VHNWYgpvBWYKMFNm', 'b4a1c8d9de890eea4ae3f94a45651139', 'no'),
 (3, 'kirtan', 'patel', '2019-10-26', 'male', 'kirtan@gmail.com', 700000000, 'http://localhost/st_marys_hospital/uploads/Arnold-Avatar.jpg', 'doctor', 'DTRQbAg/UHBSbAYgVDRaYQY0ATw=', '42709b0dd2837586679c3a858f16e8d5', 'no'),
 (2, 'lucien', 'makutano', '2019-10-26', 'male', 'lucien@gmail.com', 713125823, 'http://localhost/st_marys_hospital/uploads/one-punch-man-avatar.png', 'admin', 'WmZTZAY/ATwBPlQxAGMAOldi', '5b99c3e52edb9176114c7b43266451f6', 'no'),
-(1, 'luke', 'makutano', '2019-10-26', 'male', 'luke@gmail.com', 713125823, 'http://localhost/st_marys_hospital/uploads/WhatsApp_Image_2019-10-21_at_12_03_06_AM.jpeg', 'admin', 'CDRQZwU8BzoAP1M2VzRdZwA1', 'd23474bf757bd3831781d7ac563a3e2b', 'no'),
-(7, 'tryphy', 'masika', '2019-10-26', 'female', 'tryphy@gmail.com', 712120000, 'http://localhost/st_marys_hospital/uploads/cute-avatar.JPG', 'pharmacist', 'W2oEOAgqBzZSMgpsVzUNMA==', 'a7a621dd50b348a762f5011d86e90a98', 'no');
+(7, 'tryphose', 'masika', '2019-10-26', 'female', 'tryphy@gmail.com', 995960789, 'http://localhost/st_marys_hospital/uploads/cute-avatar.JPG', 'pharmacist', 'W2oEOAgqBzZSMgpsVzUNMA==', 'a7a621dd50b348a762f5011d86e90a98', 'no');
 
 --
 -- Indexes for dumped tables
@@ -236,12 +267,6 @@ ALTER TABLE `appointment`
   ADD PRIMARY KEY (`appointment_id`),
   ADD KEY `citation_card` (`Citation_card`),
   ADD KEY `doc_id` (`doctor_id`);
-
---
--- Indexes for table `doctor`
---
-ALTER TABLE `doctor`
-  ADD PRIMARY KEY (`doctor_id`);
 
 --
 -- Indexes for table `medicine`
@@ -263,6 +288,14 @@ ALTER TABLE `patient`
   ADD PRIMARY KEY (`Citation_card`);
 
 --
+-- Indexes for table `patient_room`
+--
+ALTER TABLE `patient_room`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `patient_id` (`patient_id`),
+  ADD UNIQUE KEY `room_id` (`room_id`);
+
+--
 -- Indexes for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
@@ -282,7 +315,7 @@ ALTER TABLE `provider`
 -- Indexes for table `room`
 --
 ALTER TABLE `room`
-  ADD PRIMARY KEY (`room_id`);
+  ADD PRIMARY KEY (`room_number`);
 
 --
 -- Indexes for table `specialities`
@@ -306,13 +339,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `medicine`
 --
 ALTER TABLE `medicine`
-  MODIFY `medicine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `medicine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -321,10 +354,28 @@ ALTER TABLE `news`
   MODIFY `news_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `patient`
+--
+ALTER TABLE `patient`
+  MODIFY `Citation_card` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `patient_room`
+--
+ALTER TABLE `patient_room`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `provider`
 --
 ALTER TABLE `provider`
-  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `room`
+--
+ALTER TABLE `room`
+  MODIFY `room_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `specialities`
@@ -336,7 +387,7 @@ ALTER TABLE `specialities`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -346,8 +397,8 @@ ALTER TABLE `staff`
 -- Constraints for table `appointment`
 --
 ALTER TABLE `appointment`
-  ADD CONSTRAINT `citation_card` FOREIGN KEY (`Citation_card`) REFERENCES `patient` (`Citation_card`),
-  ADD CONSTRAINT `doc_id` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`doctor_id`);
+  ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`Citation_card`) REFERENCES `patient` (`Citation_card`),
+  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `staff` (`staff_id`);
 
 --
 -- Constraints for table `medicine`
@@ -356,12 +407,11 @@ ALTER TABLE `medicine`
   ADD CONSTRAINT `medicine_ibfk_1` FOREIGN KEY (`provider`) REFERENCES `provider` (`name`);
 
 --
--- Constraints for table `prescriptions`
+-- Constraints for table `patient_room`
 --
-ALTER TABLE `prescriptions`
-  ADD CONSTRAINT `prescriptions_ibfk_1` FOREIGN KEY (`Citation_card`) REFERENCES `patient` (`Citation_card`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `prescriptions_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`doctor_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `prescriptions_ibfk_3` FOREIGN KEY (`medicine_id`) REFERENCES `medicine` (`medicine_id`);
+ALTER TABLE `patient_room`
+  ADD CONSTRAINT `patient_room_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`Citation_card`),
+  ADD CONSTRAINT `patient_room_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_number`);
 
 --
 -- Constraints for table `specialities`

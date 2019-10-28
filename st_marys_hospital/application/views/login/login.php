@@ -41,7 +41,6 @@
                             <button type="submit" class="btn btn-primary" id="log">login</button>
                         <?= form_close() ?>
                         <br><br><br>
-            			<a href="<?php echo site_url('security/changePassword'); ?>" style="color: #07248c">change password</a>&nbsp;&nbsp;&nbsp;
             			<a href="<?php echo site_url('security/forgotPassword'); ?>" style="color: #07248c">Forgot password?</a><br><br>
                     </div>
                     <div class="info-right">
