@@ -16,4 +16,11 @@ class UpdateDB extends CI_Model
 			$this->db->update('specialities', $data);
 		}
 	}
+
+
+	public function updatePassword($userId, $data)
+	{
+		$this->db->where('staff_id', $userId);
+		$this->db->update('staff', $data);
+	}
 }

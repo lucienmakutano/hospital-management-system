@@ -21,7 +21,8 @@ class Nurse extends CI_Controller
 
     public function index($value='')
     {
-        $this->load->view('nurse/home');
+    	$patientInfo = $this->FetchDB->getPatient();
+        $this->load->view('nurse/home', array('patientInfos'=> $patientInfo));
     }
 
     public function newPatient($value='')

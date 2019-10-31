@@ -40,62 +40,29 @@
 				<th>Citation Number</th>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>Address</th>
-				<th>Email</th>
-				<th>Telephone Number</th>
-				<th>Age</th>
+				<th>Date of birth</th>
 				<th>Gender</th>
-				<th>Blood Group</th>
-				<th>Extra Information</th>
+				<th>Telephone Number</th>
+				<th>Address</th>
+				<th>manage patient</th>
 			</tr>
-			<tr>
-				<td>STMH/2001</td>
-				<td>Lucien</td>
-				<td>Mak</td>
-				<td>Nairobi, Kenya</td>
-				<td>lucien@gmail.com</td>
-				<td>07700000</td>
-				<td>12</td>
-				<td>M</td>
-				<td>O+</td>
-				<td>Headache</td>
-			</tr>
-			<tr>
-				<td>STMH/200</td>
-				<td>Kirtan</td>
-				<td>Patel</td>
-				<td>Nairobi, Kenya</td>
-				<td>k.patel@gmail.com</td>
-				<td>077870000</td>
-				<td>15</td>
-				<td>M</td>
-				<td>O+</td>
-				<td>Stomachache</td>
-			</tr>
-			<tr>
-				<td>STMH/20</td>
-				<td>Bill</td>
-				<td>Nyerere</td>
-				<td>Nairobi, Kenya</td>
-				<td>bill@gmail.com</td>
-				<td>07707900</td>
-				<td>18</td>
-				<td>M</td>
-				<td>O+</td>
-				<td>Headache</td>
-			</tr>
-			<tr>
-				<td>STMH/28</td>
-				<td>Chris</td>
-				<td>Maunga</td>
-				<td>Nairobi, Kenya</td>
-				<td>chris@gmail.com</td>
-				<td>07707911</td>
-				<td>15</td>
-				<td>M</td>
-				<td>O+</td>
-				<td>Headache</td>
-			</tr>
+			
+				<?php if(isset($patientInfos)): ?>
+					<?php foreach($patientInfos as $patientInfo): ?>
+						<tr>
+						<td><?php echo $patientInfo->Citation_card ?></td>
+						<td><?php echo $patientInfo->fname ?></td>
+						<td><?php echo $patientInfo->lname ?></td>
+						<td><?php echo $patientInfo->DOB ?></td>
+						<td><?php echo $patientInfo->gender ?></td>
+						<td><?php echo $patientInfo->phonenumber ?></td>
+						<td><?php echo $patientInfo->address ?></td>
+						<td><a href="<?php echo site_url("nurse/edit_patient/$patientInfo->Citation_card")?>" id="edit-btn" >Edit</a>
+							<a href="<?php echo site_url("nurse/delete_patient/$patientInfo->Citation_card")?>" id="delete-btn">Delete</a></td>
+						</tr>
+					<?php endforeach ?>
+				<?php endif?>
+			
 		</table>
 	</div>
     <?php endblock() ?>

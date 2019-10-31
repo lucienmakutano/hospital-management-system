@@ -6,6 +6,10 @@
 	font-family: "montserrat", sans-serif;
 }
 
+html, body{
+	max-height: 100%;
+}
+
 h2, a{
 	padding: 30px;
 	font-size: 1.5rem;
@@ -83,4 +87,7 @@ button:hover{
 footer{
 	text-align: center;
 	color: rgba(104, 121, 176, 1);
+}
+.content{
+	min-height: 100%;
 }

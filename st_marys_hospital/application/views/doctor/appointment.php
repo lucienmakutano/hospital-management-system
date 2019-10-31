@@ -19,10 +19,13 @@
 	<div class="appointment-form">
 		<?php if(isset($data)): ?>
 			<?php foreach ($data as $dt): ?>
+				
 				<div class="appointment-content">
-					<p id="title"><?php echo $dt['citation card'] ?></p>
-					<p id="content"><?php echo $dt['summary'] ?></p>
-					<a><button id="btn">learn more</button></a>
+					<p id="title"><?php echo $dt->Citation_card ?></p>
+					<p id="content"><?php echo $dt->summary ?></p>
+					<p id="time"><?php echo $dt->time ?></p>
+					<p id="date"><?php echo $dt->date ?></p>
+					<a href="<?= site_url('doctor/moredetails') ?>"><button id="btn">learn more</button></a>
 				</div>
 			<?php endforeach; ?>
 		<?php endif ?>

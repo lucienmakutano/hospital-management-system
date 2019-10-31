@@ -12,23 +12,39 @@
 
 		<div class="password pass">
 			<h3>Change your password</h3>
-			<?= validation_errors()?>
-            <?= form_open('requests/change_password')?>
-				<label>
-					<input type="password" required placeholder="Old password">
-				</label><br><br>
-				<label>
-					<input type="password" required placeholder="New password">
-				</label><br><br>
-				<label>
-					<input type="password" required placeholder="Confirm password">
-				</label><br><br>
+            <?= form_open('security/updatePassword')?>
+				<div>
+					<label>
+						<input type="password" value="<?php echo set_value('old-password')?> "
+							   placeholder="Old password" name="old-password">
+					</label>
+					<?php echo form_error('old-password', '<div class=alert>', '</div>') ?>
+				</div>
+				<br>
+				<div>
+					<label>
+						<input type="password" value="<?php echo set_value('new-password')?> "
+							   placeholder="New password" name="new-password">
+					</label>
+					<?php echo form_error('new-password', '<div class=alert>', '</div>') ?>
+				</div>
+				<br>
+				<div>
+					<label>
+						<input type="password"  value="<?php echo set_value('confirm-password')?>"
+							   placeholder="Confirm password" name="confirm-password">
+					</label>
+					<?php echo form_error('confirm-password', '<div class=alert>', '</div>') ?>
+				</div>
+				<br>
 				<button type="submit" name="btn-change">Submit</button>
 			<?= form_close()?>
 		</div>
 
 
 	<?php endblock();?>
+
+
 	<?php startblock('footer');?>
 		<?php get_extended_block();?>
 	<?php endblock();?>
