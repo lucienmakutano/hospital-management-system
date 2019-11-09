@@ -4,7 +4,7 @@
     <?php endblock() ?>
 
     <?php startblock("extra_head") ?>
-	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/adminhome.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/admin.home.css')?>">
 	<link rel="stylesheet" href="<?= base_url('assets/css/avatar.css') ?>">
     <?php endblock() ?>
 
@@ -43,7 +43,7 @@
 					</tr>
 				<?php endforeach; ?>
 			<?php endif;?>
-		</table> 
+		</table>
 	</div>
     <?php endblock() ?>
 <?php end_extend() ?>

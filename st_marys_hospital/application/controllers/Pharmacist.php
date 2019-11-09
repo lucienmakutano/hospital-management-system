@@ -29,8 +29,9 @@ class Pharmacist extends CI_Controller
 
 	public function addMedicine($value='')
 	{
-		$data = $this->FetchDB->retrieve_providers();
-		$this->load->view('pharmacist/addMedicine', array('providers' => $data));
+		$providers = $this->FetchDB->retrieve_providers();
+		$medicines = $this->FetchDB->getMedicine();
+		$this->load->view('pharmacist/addMedicine', array('providers' => $providers, 'medicines' => $medicines));
 	}
 
 	public function view_prescription($value=''){

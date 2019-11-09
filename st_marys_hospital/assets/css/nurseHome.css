@@ -1,21 +1,22 @@
 .search{
 	text-align: right;
-	margin-right: 20px;
 }
 input{
 	margin-top: 10px;
-	height: 40px;
-	width: 200px;
+	width: 600px;
 	color: rgba(104, 121, 176, 1);
 	border: 1px solid rgba(104, 121, 176, 1);
-	border-radius: 10px;
+	border-radius: 5px;
+}
+input[type=text]{
+	width: 200px;
 }
 button{
 	background-color: #FFF;
 	color: rgba(104, 121, 176, 1);
 	border: 1px solid rgba(104, 121, 176, 1);
-	border-radius: 10px;
-	height: 40px;
+	border-radius: 5px;
+	height: 20px;
 	width: 150px;
 }
 button:hover{

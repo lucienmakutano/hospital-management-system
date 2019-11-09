@@ -21,8 +21,7 @@ class Nurse extends CI_Controller
 
     public function index($value='')
     {
-    	$patientInfo = $this->FetchDB->getPatient();
-        $this->load->view('nurse/home', array('patientInfos'=> $patientInfo));
+        $this->load->view('nurse/home');
     }
 
     public function newPatient($value='')
@@ -32,7 +31,8 @@ class Nurse extends CI_Controller
 
     public function newAppointment($value='')
     {
-        $this->load->view('nurse/appointment_form');
+    	$doctors = $this->FetchDB->getDoctors();
+        $this->load->view('nurse/appointment_form', array('doctors' => $doctors));
     }
 
     public function assignRoom($value='')

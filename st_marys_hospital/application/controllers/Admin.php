@@ -19,15 +19,45 @@ class Admin extends CI_Controller
 		}
 	}
 
+
 	public function index($value='')
     {
-		$users = $this->FetchDB->retrieve_users();
-		$this->load->view('admin/home', array('users' => $users));
+    	$this->load->library('pagination');
+		$this->load->library('table');
+
+		$this->db->select('fname', 'lname','dob', 'gender', 'email', 'phone_number', 'userType');
+
+		$config['base_url'] = base_url() . 'admin/index';
+		$config['total_rows'] = $this->db->get('staff')->num_rows();
+		$config['per_page'] = 5;
+		$config['num_links'] = 5;
+
+
+		$this->form_validation->set_rules('search', 'Search', "alpha|required");
+		if ($this->form_validation->run())
+		{
+			$config['total_rows'] = $this->db->get_where('staff', array('fname' => $this->input->post('search')))->num_rows();
+			$config['records'] = $this->db->select('fname, lname,dob, gender, email, phone_number, user_type')
+				->get_where('staff', array('fname' => $this->input->post('search')) ,$config['per_page'], $this->uri->segment(3));
+
+			$this->pagination->initialize($config);
+			$this->load->view('admin/home',$config);
+		}
+		else
+		{
+			$config['records'] = $this->db->select('fname, lname,dob, gender, email, phone_number, user_type')
+				->get('staff', $config['per_page'], $this->uri->segment(3));
+
+			$this->pagination->initialize($config);
+			$this->load->view('admin/home',$config);
+		}
     }
+
 
     public function addUser($value=''){
     	$this->load->view('admin/addUser');
 	}
+
 
     public function news($value=''){
     	$this->load->view('admin/addNews');

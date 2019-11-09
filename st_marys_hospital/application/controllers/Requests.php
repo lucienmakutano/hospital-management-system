@@ -84,24 +84,24 @@ class Requests extends CI_Controller
     public function book_appointment($value='')
     {
       $this->form_validation->set_rules('card',"Patient's citation card ","required|numeric");
-			$this->form_validation->set_rules('id',"Doctor's ID","required|numeric");
-			$this->form_validation->set_rules('date',"Appointment Date","required");
-			$this->form_validation->set_rules('time',"Appointment Time",'required');
-			$this->form_validation->set_rules('symptom','Brief summary of the symptom ','required');
-			if ($this->form_validation->run()) {
-				$appointment = array(
-					'doctor_id' => $this->input->post('id'),
-					'Citation_card' => $this->input->post('card'),
-					'date' => $this->input->post('date'),
-					'time' => $this->input->post('time'),
-					'summary' => $this->input->post('symptom')
-				);
-				$this->WriteDB->book_appointment($appointment);
-				redirect('nurse');
-			} else {
-				$this->load->view('nurse/appointment_form');
-			}
+      $this->form_validation->set_rules('id',"Doctor's ID","required|numeric");
+      $this->form_validation->set_rules('date',"Appointment Date","required|is_unique[appointment.date]");
+      $this->form_validation->set_rules('symptom','Brief summary of the symptom ','required');
 
+
+      if ($this->form_validation->run()) {
+      	$appointment = array(
+      		'doctor_id' => $this->input->post('id'),
+			'Citation_card' => $this->input->post('card'),
+			'date' => $this->input->post('date'),
+			'summary' => $this->input->post('symptom')
+		);
+
+      	$this->WriteDB->book_appointment($appointment);
+      	redirect('nurse');
+      } else {
+      	redirect('nurse/newAppointment');
+      }
     }
 
     public function assign_room($value='')
@@ -180,21 +180,41 @@ class Requests extends CI_Controller
 
     public function add_medicine($value='')
     {
-		$this->form_validation->set_rules('medicine-name', "Medicine name", "required|max_length[50]");
+		$this->form_validation->set_rules('medicine', "Medicine name", "required");
 		$this->form_validation->set_rules('quantity', 'Quantity', "required|numeric");
 		$this->form_validation->set_rules('price', 'Price', "required|numeric");
+		$this->form_validation->set_rules('expiry-date', 'Expiry date', "required");
 		$this->form_validation->set_rules('provider', 'Provider', "required");
 
 		if($this->form_validation->run()){
 			$data = array(
-				'medicine_name' => $this->input->post('medicine-name'),
+				'medic_id' => $this->input->post('medicine'),
 				'quantity' => $this->input->post('quantity'),
+				'expiry_date' => $this->input->post('expiry-date'),
 				'price_per_tablet' => $this->input->post('price'),
 				'provider' => $this->input->post('provider')
 			);
 
-			$this->WriteDB->add_medicine($data);
-			redirect('pharmacist');
+
+			$expiry_date = strtotime($this->input->post('expiry-date'));
+			$current_date = strtotime(date('Y-m-d'));
+
+
+			if ($expiry_date <= $current_date)
+			{
+				$this->session->set_flashdata("error", "the medicine you are trying to record has already expired");
+				$this->load->view('pharmacist/addMedicine');
+			}
+			elseif (($expiry_date - $current_date) <= 2505600)
+			{
+				$this->session->set_flashdata("error", "the medicine you are trying to record is going to expire soon");
+				$this->load->view('pharmacist/addMedicine');
+			}
+			else{
+				$this->WriteDB->add_medicine($data);
+				redirect('pharmacist');
+			}
+
 		}
 		else{
 			$this->load->view('pharmacist/addMedicine');

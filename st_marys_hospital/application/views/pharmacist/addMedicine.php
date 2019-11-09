@@ -13,34 +13,50 @@
 
 	<?php startblock('content');?>
 		<div class="patient-form">
+			<?php if ($this->session->flashdata("error")):?>
+				<div class="alert alert-danger"><?php echo $this->session->flashdata('error')?></div>
+			<?php endif ?>
 			<h2>Add New Medicine</h2>
 			<?= form_open('requests/add_medicine') ?>
 			<label> Medicine name
-				<input type="text" name="medicine-name" value="<?= set_value('medicine-name'); ?>">
-				<?php echo form_error('medicine-name', '<div class="alert">', '</div>') ?>
+				<select name="medicine">
+					<option value="" selected>Select</option>
+					<?php if (isset($medicines)): ?>
+						<?php foreach ($medicines as $medicine): ?>
+							<option <?php echo set_select('medicine', "$medicine->medicine_name") ?>
+								value="<?php echo $medicine->medicine_id ?>"><?php echo $medicine->medicine_name ?></option>
+						<?php endforeach; ?>
+					<?php endif;?>
+				</select>
+				<?php echo form_error('medicine', '<div class="alert">', '</div>') ?>
 			</label>
 			<label> quantity
-				<input type="number" name="quantity" value="<?= set_value('quantity'); ?>">
+				<input type="number" name="quantity" value="<?= set_value('quantity'); ?>" autocomplete="off">
 				<?php echo form_error('quantity', '<div class="alert">', '</div>') ?>
 			</label>
 			<label> Unit price
-				<input type="text" name="price" value="<?= set_value('price'); ?>">
+				<input type="text" name="price" value="<?= set_value('price'); ?>" autocomplete="off">
 				<?php echo form_error('price', '<div class="alert">', '</div>') ?>
 			</label>
 
+			<label> Expiry date
+				<input type="Date" name="expiry-date" value="<?= set_value('expiry-date'); ?>" autocomplete="off">
+				<?php echo form_error('expiry-date', '<div class="alert">', '</div>') ?>
+			</label>
+
 			<label> Provider
-				<select name="provider" value="<?= set_value('provider'); ?>">
-					<option value="select" selected>Select</option>
+				<select name="provider">
+					<option value="" selected>Select</option>
 					<?php if (isset($providers)): ?>
 						<?php foreach ($providers as $provider): ?>
-							<option <?php echo set_select('provider', "<?php echo $provider->name ?>") ?>
-								value="<?php echo $provider->name ?>"><?php echo $provider->name ?></option>
+							<option <?php echo set_select('provider', "$provider->name") ?>
+								value="<?php echo $provider->provider_id ?>"><?php echo $provider->name ?></option>
 						<?php endforeach ?>
 					<?php endif;?>
 				</select>
 				<?php echo form_error('provider', '<div class="alert">', '</div>') ?>
 			</label>
-			<button type="submit" class="ptn-btn">Publish</button>
+			<button type="submit" class="ptn-btn">Add</button>
 			<?= form_close()?>
 		</div>
 	<?php endblock()?>

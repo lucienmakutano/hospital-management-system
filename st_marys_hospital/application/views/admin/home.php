@@ -3,7 +3,8 @@
     <?php endblock() ?>
 
     <?php startblock('extra_head') ?>
-	<link rel="stylesheet" href="<?= base_url('assets/css/adminhome.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/admin.home.css') ?>">
+<!--	<link rel="stylesheet" href="--><?//= base_url('assets/css/materialize.min.css') ?><!--">-->
     <link rel="stylesheet" href="<?= base_url('assets/css/alert.css') ?>">
     <?php endblock() ?>
 
@@ -27,39 +28,50 @@
 		}
 		?>
 		<div class="responsive-table">
+			<div id="search-filter">
+				<form action="<?php echo site_url('admin')?>" method="post">
+					<label for="">filter by</label>
+					<select name="" id="">
+						<option value="">filter</option>
+					</select>
+				</form>
+
+
+				<form action="<?php echo site_url('admin')?>" method="post">
+					<div>
+						<label>
+							<input type="text" placeholder="search by first name" name="search" autocomplete="off">
+						</label>
+						<button type="submit">search</button>
+						<?php echo form_error('search', '<small class=alert>', '</small>')?>
+					</div>
+				</form>
+
+
+			</div>
+			<hr>
 			<h3>Users</h3>
-			<table>
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Date Of Birth</th>
-					<th>Gender</th>
-					<th>Email</th>
-					<th>Phone Number</th>
-					<th>User Type</th>
-					<th>manage user</th>
-				</tr>
-				<?php if (isset($users)): ?>
-					<?php foreach ($users as $user): ?>
-						<tr>
-							<td><?php echo $user->fname ?></td>
-							<td><?php echo $user->lname  ?></td>
-							<td><?php echo $user->dob  ?></td>
-							<td><?php echo $user->gender  ?></td>
-							<td><?php echo $user->email  ?></td>
-							<td><?php echo $user->phone_number  ?></td>
-							<td><?php echo $user->user_type  ?></td>
-							<td>
-								<a href="<?php echo site_url("admin/edit_user/$user->staff_id") ?>" id="edit-btn">edit</a>
-								<a type="submit" href="<?php echo site_url("admin/delete_user/$user->staff_id") ?>"
-								   onclick="return confirm('are you sure you want to delete <?php echo $user->fname ?> ?')" id="delete-btn">delete</a>
-							</td>
-						</tr>
-					<?php endforeach; ?>
-				<?php else: ?>
-					<h2>No records was found</h2>
-				<?php endif?>
-			</table>
+			<?php
+			if (isset($records)){
+				$users = $records->result_array();
+				if (isset($users)){
+					$this->table->set_heading('First Name', 'Last Name', 'Date Of Birth', 'Gender', 'Email', 'Phone Number', 'User Type', 'manage user');
+					echo $this->table->generate($records);
+					echo '<div class="pager">' . $this->pagination->create_links() . "</div>";
+				}
+			}
+			else{
+				echo "<h1>" . "No such records exists" . "</h1>>";
+			}
+
+			?>
 		</div>
     <?php endblock() ?>
 <?php end_extend() ?>
+
+<!--<td>
+	<a type="submit" href="<?php /*echo site_url("admin/delete_user/") */?>" id="edit-btn">edit</a>
+
+	'<a type="submit" href="<?php /*echo site_url("admin/delete_user/") */?>"
+		onclick="return confirm('are you sure you want to delete <?php /*echo '' */?> ?')" id="delete-btn">delete</a>'
+</td>-->

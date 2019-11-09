@@ -54,3 +54,23 @@ h3{
 #delete-btn{
 	background: #B71C1C;
 }
+.pager{
+	padding: 10px 0;
+	text-align: center;
+}
+#search-filter{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin: 10px;
+}
+#search-filter form{
+	margin-left: 20px;
+}
+
+input[type=text],
+select{
+	border-color: #2e8ece;
+	height: 20px;
+	width: 120px;
+}

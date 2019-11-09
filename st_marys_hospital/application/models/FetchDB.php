@@ -14,7 +14,7 @@ class FetchDB extends CI_Model
 	}
 
 	function retrieve_providers(){
-		$this->db->select('name');
+		$this->db->select('provider_id,name');
 		$query = $this->db->get('provider');
 		return $query->result();
 	}
@@ -36,6 +36,19 @@ class FetchDB extends CI_Model
 
         function appointment(){
 		$query=$this->db->get('appointment');
+		return $query->result();
+	}
+
+	function getMedicine()
+	{
+		$query = $this->db->get('medicine_details');
+		return $query->result();
+	}
+
+
+	function getDoctors()
+	{
+		$query = $this->db->select('staff_id, fname, lname')->get_where('staff', array('user_type' => 'doctor'));
 		return $query->result();
 	}
 	// function moredetail(){

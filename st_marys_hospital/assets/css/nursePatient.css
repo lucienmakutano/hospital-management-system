@@ -7,6 +7,7 @@ input[type=date],
 input[type=time],
 input[type=password],
 input[type=file],
+input[type=datetime-local],
 textarea,
  select{
   width: 100%;

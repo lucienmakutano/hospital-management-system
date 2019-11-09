@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2019 at 06:22 AM
+-- Generation Time: Nov 09, 2019 at 08:57 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -32,45 +32,54 @@ CREATE TABLE `appointment` (
   `appointment_id` int(11) NOT NULL,
   `Citation_card` int(11) NOT NULL,
   `doctor_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `time` time(6) NOT NULL,
+  `date` datetime NOT NULL,
   `summary` varchar(255) NOT NULL,
-  `sorted` tinyint(1) NOT NULL DEFAULT 0
+  `checked` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`appointment_id`, `Citation_card`, `doctor_id`, `date`, `time`, `summary`, `sorted`) VALUES
-(2, 1, 3, '2019-10-10', '03:03:00.000000', 'dfdfffdf', 0),
-(3, 2, 3, '2019-10-27', '11:06:00.000000', 'sdfghjk', 0),
-(4, 1, 3, '2019-10-27', '17:56:00.000000', 'this is the test appointment', 0);
+INSERT INTO `appointment` (`appointment_id`, `Citation_card`, `doctor_id`, `date`, `summary`, `checked`) VALUES
+(2, 1, 3, '2019-10-10 00:00:00', 'dfdfffdf', 0),
+(3, 2, 3, '2019-10-27 00:00:00', 'sdfghjk', 0),
+(4, 1, 3, '2019-10-27 00:00:00', 'this is the test appointment', 0),
+(5, 1, 3, '2019-11-07 00:00:00', 'Headache', 0),
+(6, 4, 14, '2019-11-09 11:42:00', 'headache', 0),
+(7, 5, 14, '2019-11-09 11:43:00', 'stomacache', 0),
+(8, 3, 14, '2019-11-09 12:18:00', 'broken hand', 0),
+(9, 4, 14, '2019-11-09 12:19:00', 'broken leg', 0);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `medicine`
 --
+-- Error reading structure for table st_marys_hospital.medicine: #1932 - Table 'st_marys_hospital.medicine' doesn't exist in engine
+-- Error reading data for table st_marys_hospital.medicine: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `st_marys_hospital`.`medicine`' at line 1
 
-CREATE TABLE `medicine` (
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicine_details`
+--
+
+CREATE TABLE `medicine_details` (
   `medicine_id` int(11) NOT NULL,
   `medicine_name` varchar(50) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price_per_tablet` int(11) NOT NULL,
-  `provider` varchar(50) NOT NULL
+  `unit` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `medicine`
+-- Dumping data for table `medicine_details`
 --
 
-INSERT INTO `medicine` (`medicine_id`, `medicine_name`, `quantity`, `price_per_tablet`, `provider`) VALUES
-(2, 'paracetamol', 100, 10, 'twist inc.'),
-(3, 'paracetamol', 400, 20, 'lucien org'),
-(4, 'cypro', 220, 40, 'twist inc.'),
-(5, 'apirine', 500, 50, 'lucien org'),
-(7, 'shalsip tz', 500, 50, 'shalina');
+INSERT INTO `medicine_details` (`medicine_id`, `medicine_name`, `unit`) VALUES
+(1, 'paracetamol', 'tablet'),
+(2, 'amoxy', 'tablet'),
+(3, 'panadol', 'tablet'),
+(4, 'apirine', 'tablet');
 
 -- --------------------------------------------------------
 
@@ -122,7 +131,11 @@ CREATE TABLE `patient` (
 
 INSERT INTO `patient` (`Citation_card`, `fname`, `lname`, `DOB`, `gender`, `phonenumber`, `address`) VALUES
 (1, 'luciien', 'maku', '2019-10-26', 'male', 123456, 'nairobi'),
-(2, 'luciien', 'maku', '2019-10-26', 'male', 123456, 'nairobi');
+(2, 'luciien', 'maku', '2019-10-26', 'male', 123456, 'nairobi'),
+(3, 'tryphose', 'masika', '2019-11-09', 'male', 995960789, 'nairobi kenya'),
+(4, 'lucien', 'makutano', '2019-11-09', 'male', 2147483647, 'nairobi kenya'),
+(5, 'lucien', 'makutano', '2019-11-09', 'male', 2147483647, 'nairobi kenya'),
+(6, 'tryphose', 'masika', '2019-11-09', 'male', 712120000, 'nairobi kenya');
 
 -- --------------------------------------------------------
 
@@ -221,7 +234,8 @@ CREATE TABLE `specialities` (
 --
 
 INSERT INTO `specialities` (`id`, `speciality`, `staff_id`) VALUES
-(1, 'pediatrician', 3);
+(1, 'pediatrician', 3),
+(2, 'surgeon', 14);
 
 -- --------------------------------------------------------
 
@@ -250,10 +264,17 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`staff_id`, `fname`, `lname`, `dob`, `gender`, `email`, `phone_number`, `profile_picture`, `user_type`, `password`, `verification_key`, `is_validated`) VALUES
 (8, 'annie', 'kihangi', '2019-10-26', 'female', 'annie@gmail.com', 790129900, 'http://localhost/st_marys_hospital/uploads/avatar-icon.jpg', 'nurse', 'X2MEOQY8Aj8HM1YzWDtYYgcy', 'aa48a79699cda827ab361e767755b4c8', 'no'),
+(13, 'blessing', 'makutano', '2019-11-09', 'male', 'b@mail.com', 34567890, 'http://localhost/st_marys_hospital/uploads/illustration-avatar.jpg', 'admin', 'CDcDPAk8AzJVdwMkUWkAZwRiCXM=', '444f00fcc10fee9233a97729a9110eb3', 'no'),
 (6, 'bill', 'nyerere', '2019-10-26', 'male', 'bill@gmail.com', 711220000, 'http://localhost/st_marys_hospital/uploads/Zoltan-Avatar1.jpg', 'pharmacist', 'CSRdZgYzAScAPAcyADJbO1clAH0HZVI2WGUBYg==', 'f6a838af36bddef1c564fbbebcc2a0c7', 'no'),
 (5, 'christian', 'maunga', '2019-10-26', 'male', 'christian@gmail.com', 711000000, 'http://localhost/st_marys_hospital/uploads/person-avatar.png', 'nurse', 'DT5WcFN1VHNWYgpvBWYKMFNm', 'b4a1c8d9de890eea4ae3f94a45651139', 'no'),
+(12, 'faustin', 'makutano', '2019-11-06', 'male', 'f@gmail.com', 2147483647, 'http://localhost/st_marys_hospital/uploads/cartoon-avatar.jpg', 'admin', 'DTZTYVNyUXYNKAQ5Um1cZAIxAjgDZA==', '2911d95412271069c08bbe0ce9e7e5c6', 'no'),
+(17, 'felix', 'tshitshi', '2019-11-06', 'male', 'felix@gmail.com', 7987654, 'http://localhost/st_marys_hospital/uploads/mojtaba-avatar.png', 'pharmacist', 'DzQEMldvAz4FLFR0ACIMbQFpAn8AIAE/Wzw=', '31a84984e90ff1c64fbb21795256a1ce', 'no'),
+(15, 'hellene', 'maunga', '2019-11-02', 'female', 'hm@gmail.com', 56789876, 'http://localhost/st_marys_hospital/uploads/miracle-avatr.png', 'admin', 'ADVSZAI6V29SZldtVGALMwQ3BD5XMA==', '5e9af806e6dae667cb80157880fcf115', 'no'),
+(14, 'juliette', 'makutano', '2019-07-08', 'female', 'j@gmail.com', 567896534, 'http://localhost/st_marys_hospital/uploads/summer-avatar3.png', 'doctor', 'ADcGIFVtDTAEMFZ2BCFaNg==', 'ebb962091dc1e838be90178c961a3e5c', 'no'),
 (3, 'kirtan', 'patel', '2019-10-26', 'male', 'kirtan@gmail.com', 700000000, 'http://localhost/st_marys_hospital/uploads/Arnold-Avatar.jpg', 'doctor', 'DTRQbAg/UHBSbAYgVDRaYQY0ATw=', '42709b0dd2837586679c3a858f16e8d5', 'no'),
-(2, 'lucien', 'makutano', '2019-10-26', 'male', 'lucien@gmail.com', 713125823, 'http://localhost/st_marys_hospital/uploads/one-punch-man-avatar.png', 'admin', 'WmZTZAY/ATwBPlQxAGMAOldi', '5b99c3e52edb9176114c7b43266451f6', 'no'),
+(16, 'lydia', 'makutano', '2019-11-02', 'female', 'lm@gmail.com', 456785490, 'http://localhost/st_marys_hospital/uploads/avatar-icon1.jpg', 'admin', 'X24ELlJiATwAMARhUzANN1Fk', '75cf0ae4af721db4840ca67be7536aec', 'no'),
+(2, 'lucien', 'makutano', '2019-10-26', 'male', 'lucien@gmail.com', 713125823, 'http://localhost/st_marys_hospital/uploads/one-punch-man-avatar.png', 'admin', 'WmYGMQI7BjtSbVNuVXcLdgZ1Vj5WcQE4AX0=', '5b99c3e52edb9176114c7b43266451f6', 'no'),
+(18, 'fsda', 'sda', '2019-11-06', 'sda', 'sdaf@fsd.dfsa', 2342345, 'http://localhost/st_marys_hospital/uploads/skecth-avatar.png', 'nurse', 'DTpXbAM8BzQAOwM/AzUNYgNxVTZSaldrAGEBJlslADk=', '29291adef1a83962d94eafbed8c4e60c', 'no'),
 (7, 'tryphose', 'masika', '2019-10-26', 'female', 'tryphy@gmail.com', 995960789, 'http://localhost/st_marys_hospital/uploads/cute-avatar.JPG', 'pharmacist', 'W2oEOAgqBzZSMgpsVzUNMA==', 'a7a621dd50b348a762f5011d86e90a98', 'no');
 
 --
@@ -269,11 +290,10 @@ ALTER TABLE `appointment`
   ADD KEY `doc_id` (`doctor_id`);
 
 --
--- Indexes for table `medicine`
+-- Indexes for table `medicine_details`
 --
-ALTER TABLE `medicine`
-  ADD PRIMARY KEY (`medicine_id`),
-  ADD KEY `prov_id` (`provider`);
+ALTER TABLE `medicine_details`
+  ADD PRIMARY KEY (`medicine_id`);
 
 --
 -- Indexes for table `news`
@@ -339,13 +359,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `medicine`
+-- AUTO_INCREMENT for table `medicine_details`
 --
-ALTER TABLE `medicine`
-  MODIFY `medicine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `medicine_details`
+  MODIFY `medicine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -357,7 +377,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `Citation_card` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Citation_card` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `patient_room`
@@ -381,13 +401,13 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT for table `specialities`
 --
 ALTER TABLE `specialities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
@@ -399,12 +419,6 @@ ALTER TABLE `staff`
 ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`Citation_card`) REFERENCES `patient` (`Citation_card`),
   ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `staff` (`staff_id`);
-
---
--- Constraints for table `medicine`
---
-ALTER TABLE `medicine`
-  ADD CONSTRAINT `medicine_ibfk_1` FOREIGN KEY (`provider`) REFERENCES `provider` (`name`);
 
 --
 -- Constraints for table `patient_room`
