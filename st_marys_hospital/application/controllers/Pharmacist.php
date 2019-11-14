@@ -34,43 +34,25 @@ class Pharmacist extends CI_Controller
 		$this->load->view('pharmacist/addMedicine', array('providers' => $providers, 'medicines' => $medicines));
 	}
 
-	public function view_prescription($value=''){
-		$data = array(
-			"patient_1" => array(
-				"dosage" => 10,
-				"medicine" => "paracetamol",
-				"citation_card" => "123456"
-			),
-			"patient_2" => array(
-				"dosage" => 10,
-				"medicine" => "paracetamol",
-				"citation_card" => "123456"
-			),
-			"patient_3" => array(
-				"dosage" => 10,
-				"medicine" => "paracetamol",
-				"citation_card" => "123456"
-			),
-			"patient_4" => array(
-				"dosage" => 10,
-				"medicine" => "paracetamol",
-				"citation_card" => "123456"
-			),
-			"patient_5" => array(
-				"dosage" => 10,
-				"medicine" => "paracetamol",
-				"citation_card" => "123456"
-			),
-			"patient_6" => array(
-				"dosage" => 10,
-				"medicine" => "paracetamol",
-				"citation_card" => "123456"
-			)
-		);
-		$this->load->view('pharmacist/viewPrescription', array('data' => $data));
+	public function view_prescription($value='')
+	{
+		$prescriptions = $this->FetchDB->getPrescriptions();
+		$this->load->view('pharmacist/viewPrescription', array('prescriptions' => $prescriptions));
 	}
 
 	public function provider(){
 		$this->load->view('pharmacist/provider');
+	}
+
+	function checkout_medicine($prescription_id)
+	{
+		$prescriptions = $this->FetchDB->getPrescriptionsById($prescription_id);
+		$this->load->view("pharmacist/checkoutMedicine", array('prescriptions' => $prescriptions));
+	}
+
+
+	public function dispatch()
+	{
+		$this->load->view('');
 	}
 }

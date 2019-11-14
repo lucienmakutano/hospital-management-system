@@ -23,4 +23,12 @@ class UpdateDB extends CI_Model
 		$this->db->where('staff_id', $userId);
 		$this->db->update('staff', $data);
 	}
+
+
+
+	public function appointment_checked($Citation_card)
+	{
+		$this->db->where('Citation_card', $Citation_card);
+		$this->db->update('appointment', array('checked' => true));
+	}
 }

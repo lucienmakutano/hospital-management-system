@@ -43,4 +43,12 @@ class WriteDB extends CI_Model
 		$this->db->insert('room', $data);
 		return "A new patient was assign successfully";
 	}
+	public function add_diagnosis($data){
+		$this->db->insert('diagnosis',$data);
+		return "Diagnosis added successfully";
+	}
+	public function add_prescription($data){
+		$this->db->insert('prescriptions',$data);
+		return "prescriptions added successfully";
+	}
 }

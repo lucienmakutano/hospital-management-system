@@ -20,7 +20,7 @@ class FetchDB extends CI_Model
 	}
 
 	function retrieve_medicines(){
-		$query = $this->db->get('medicine');
+		$query = $this->db->select('*')->join('medicine_details', 'medicine_details.medicine_id=medicine.medic_id')->get('medicine');
 		return $query->result();
 	}
 
@@ -34,8 +34,8 @@ class FetchDB extends CI_Model
 		return $query->result();
 	}
 
-        function appointment(){
-		$query=$this->db->get('appointment');
+	function appointment(){
+		$query=$this->db->get_where('appointment', array('checked' => false));
 		return $query->result();
 	}
 
@@ -51,8 +51,27 @@ class FetchDB extends CI_Model
 		$query = $this->db->select('staff_id, fname, lname')->get_where('staff', array('user_type' => 'doctor'));
 		return $query->result();
 	}
-	// function moredetail(){
-	// 	$query=$this->db->get('diagnosis');
-	// 	return $query->result();
-	// }
+
+
+
+	function moredetail($citation_card){
+		$query = $this->db->get_where('diagnosis', array('Citation_card' => $citation_card), 1);
+		return $query->result();
+	}
+
+
+
+	function getPrescriptions()
+	{
+		$query = $this->db->get_where('prescriptions', array('checked' => false));
+		return $query->result();
+	}
+
+
+
+	public function getPrescriptionsById($prescription_id='')
+	{
+		$query = $this->db->get_where('prescriptions', array('prescription_id' => $prescription_id));
+		return $query->result();
+	}
 }

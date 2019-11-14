@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2019 at 08:57 PM
+-- Generation Time: Nov 14, 2019 at 03:02 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -42,10 +42,10 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`appointment_id`, `Citation_card`, `doctor_id`, `date`, `summary`, `checked`) VALUES
-(2, 1, 3, '2019-10-10 00:00:00', 'dfdfffdf', 0),
-(3, 2, 3, '2019-10-27 00:00:00', 'sdfghjk', 0),
-(4, 1, 3, '2019-10-27 00:00:00', 'this is the test appointment', 0),
-(5, 1, 3, '2019-11-07 00:00:00', 'Headache', 0),
+(2, 1, 3, '2019-10-10 00:00:00', 'dfdfffdf', 1),
+(3, 2, 3, '2019-10-27 00:00:00', 'sdfghjk', 1),
+(4, 1, 3, '2019-10-27 00:00:00', 'this is the test appointment', 1),
+(5, 1, 3, '2019-11-07 00:00:00', 'Headache', 1),
 (6, 4, 14, '2019-11-09 11:42:00', 'headache', 0),
 (7, 5, 14, '2019-11-09 11:43:00', 'stomacache', 0),
 (8, 3, 14, '2019-11-09 12:18:00', 'broken hand', 0),
@@ -54,10 +54,75 @@ INSERT INTO `appointment` (`appointment_id`, `Citation_card`, `doctor_id`, `date
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `diagnosis`
+--
+
+CREATE TABLE `diagnosis` (
+  `ID` int(11) NOT NULL,
+  `citation_card` int(11) DEFAULT NULL,
+  `blood_pressure` varchar(15) DEFAULT NULL,
+  `height` varchar(20) DEFAULT NULL,
+  `weight` varchar(20) DEFAULT NULL,
+  `BMI` varchar(20) DEFAULT NULL,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `diagnosis`
+--
+
+INSERT INTO `diagnosis` (`ID`, `citation_card`, `blood_pressure`, `height`, `weight`, `BMI`, `Date`) VALUES
+(1, 1, '120', '153', '65', '14', '2019-11-11 08:29:20'),
+(3, 2, '140', '153', '67', '25', '2019-11-11 08:36:07'),
+(4, 3, '120', '123', '120', '23', '2019-11-11 14:03:11'),
+(5, 4, '120', '90', '170', '26', '2019-11-11 14:04:10'),
+(6, NULL, '45t', '1.59', '69', '27.29322416043669', '2019-11-14 06:57:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dispatches`
+--
+
+CREATE TABLE `dispatches` (
+  `id` int(11) NOT NULL,
+  `medicine_id` int(11) NOT NULL,
+  `citation_card` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `date_dispatched` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `medicine`
 --
--- Error reading structure for table st_marys_hospital.medicine: #1932 - Table 'st_marys_hospital.medicine' doesn't exist in engine
--- Error reading data for table st_marys_hospital.medicine: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `st_marys_hospital`.`medicine`' at line 1
+
+CREATE TABLE `medicine` (
+  `medicine_id` int(11) NOT NULL,
+  `medic_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `expiry_date` date NOT NULL,
+  `price_per_tablet` int(11) NOT NULL,
+  `provider` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `medicine`
+--
+
+INSERT INTO `medicine` (`medicine_id`, `medic_id`, `quantity`, `expiry_date`, `price_per_tablet`, `provider`) VALUES
+(16, 4, 234, '2019-11-09', 12, 3),
+(17, 1, 120, '2019-11-09', 23, 2),
+(20, 3, 122, '2019-11-09', 1, 2),
+(21, 1, 211, '2019-11-09', 12, 2),
+(22, 2, 879, '2019-11-09', 346, 3),
+(23, 1, 324, '2019-11-09', 234, 2),
+(24, 1, 34, '2019-11-09', 234, 3),
+(25, 3, 4, '2019-11-16', 3, 3),
+(26, 2, 450, '2019-10-09', 50, 3),
+(27, 4, 56, '2019-10-09', 7, 3),
+(28, 3, 56, '2019-10-09', 7, 3);
 
 -- --------------------------------------------------------
 
@@ -106,8 +171,7 @@ INSERT INTO `news` (`news_id`, `title`, `message`, `date`) VALUES
 (5, 'hjkjj', 'lorem ipsum 6', '2019-10-20'),
 (6, 'lorem 2', 'lorem ipsum 87', '2019-10-20'),
 (7, 'lorem 2', 'fghjkl;\'56789', '2019-10-20'),
-(8, 'lorem 2', 'fggdfgdff', '2019-10-20'),
-(9, 'news 123', 'Lorem ipsum dolor sit amet, mei nibh tacimates principes an, ei exerci oblique disputando est, consul officiis eos eu. Cum eu omnes persequeris, cu clita postulant percipitur vel. Ius quod erant populo ad, ius dicat euismod at, ea dicam ceteros sed. Ne vocent laboramus constituto cum, duo alienum of', '2019-10-24');
+(9, 'news 123', 'Lorem ipsum dolor sit amet, mei nibh tacimates principes an, ei exerci oblique disputando est.\r\n', '2019-10-24');
 
 -- --------------------------------------------------------
 
@@ -164,14 +228,22 @@ INSERT INTO `patient_room` (`id`, `patient_id`, `room_id`, `date`) VALUES
 --
 
 CREATE TABLE `prescriptions` (
-  `prescription_id` varchar(100) NOT NULL,
+  `prescription_id` int(11) NOT NULL,
   `dosage` varchar(10) NOT NULL,
   `doctor_id` varchar(50) NOT NULL,
   `Citation_card` int(11) NOT NULL,
   `medicine_id` int(11) NOT NULL,
   `issued_on` timestamp NOT NULL DEFAULT current_timestamp(),
-  `sorted` tinyint(1) NOT NULL DEFAULT 0
+  `checked` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`prescription_id`, `dosage`, `doctor_id`, `Citation_card`, `medicine_id`, `issued_on`, `checked`) VALUES
+(1, 'fsdafasdfs', '3', 2, 0, '2019-11-14 07:08:12', 0),
+(2, 'sfdfsdfsdf', '3', 1, 0, '2019-11-14 07:10:08', 0);
 
 -- --------------------------------------------------------
 
@@ -290,6 +362,28 @@ ALTER TABLE `appointment`
   ADD KEY `doc_id` (`doctor_id`);
 
 --
+-- Indexes for table `diagnosis`
+--
+ALTER TABLE `diagnosis`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `citation_card` (`citation_card`);
+
+--
+-- Indexes for table `dispatches`
+--
+ALTER TABLE `dispatches`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `medicine_id` (`medicine_id`),
+  ADD KEY `citation_card` (`citation_card`);
+
+--
+-- Indexes for table `medicine`
+--
+ALTER TABLE `medicine`
+  ADD PRIMARY KEY (`medicine_id`),
+  ADD KEY `prov_id` (`provider`);
+
+--
 -- Indexes for table `medicine_details`
 --
 ALTER TABLE `medicine_details`
@@ -362,6 +456,24 @@ ALTER TABLE `appointment`
   MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `diagnosis`
+--
+ALTER TABLE `diagnosis`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `dispatches`
+--
+ALTER TABLE `dispatches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `medicine`
+--
+ALTER TABLE `medicine`
+  MODIFY `medicine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `medicine_details`
 --
 ALTER TABLE `medicine_details`
@@ -384,6 +496,12 @@ ALTER TABLE `patient`
 --
 ALTER TABLE `patient_room`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  MODIFY `prescription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `provider`
@@ -419,6 +537,13 @@ ALTER TABLE `staff`
 ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`Citation_card`) REFERENCES `patient` (`Citation_card`),
   ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `staff` (`staff_id`);
+
+--
+-- Constraints for table `dispatches`
+--
+ALTER TABLE `dispatches`
+  ADD CONSTRAINT `dispatches_ibfk_1` FOREIGN KEY (`citation_card`) REFERENCES `patient` (`Citation_card`),
+  ADD CONSTRAINT `dispatches_ibfk_2` FOREIGN KEY (`medicine_id`) REFERENCES `medicine` (`medicine_id`);
 
 --
 -- Constraints for table `patient_room`
