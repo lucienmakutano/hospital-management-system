@@ -39,7 +39,7 @@
 						<td> <?php echo $medicine->medicine_name ?> </td>
 						<td> <?php echo $medicine->quantity ?> </td>
 						<td> <?php echo $medicine->price_per_tablet ?> </td>
-						<td> <?php echo $medicine->provider ?> </td>
+						<td> <?php echo $medicine->name ?> </td>
 					</tr>
 				<?php endforeach; ?>
 			<?php endif;?>

@@ -51,8 +51,8 @@ class Pharmacist extends CI_Controller
 	}
 
 
-	public function dispatch()
+	public function dispatch($medicine_id)
 	{
-		$this->load->view('');
+
 	}
 }

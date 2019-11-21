@@ -17,7 +17,7 @@
 			<li id="profile-picture"><a href=""><img src="<?= $this->session->userdata('profile picture')?>" alt=""></a></li>
 		<!--	<li><a href="--><?//= site_url('doctor/')  ?><!--" class="link">Home</a></li>-->
 			<li><a href="<?= site_url('doctor/appointment') ?>" class="link">Home</a></li>
-			<li><a href="<?= site_url('doctor/prescription') ?>" class="link">Prescriptions</a><li>
+<!--			<li><a href="--><?//= site_url('doctor/prescription') ?><!--" class="link">Prescriptions</a><li>-->
 		</ul>
 	<?php endblock() ?>
 

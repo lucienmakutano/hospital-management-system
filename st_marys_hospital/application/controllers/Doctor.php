@@ -51,7 +51,8 @@ class Doctor extends CI_Controller
         }
         else
         {
-            $this->load->view('doctor/prescription', $citation_c);
+        	$patient = $this->FetchDB->getPatientById($citation_card);
+            $this->load->view('doctor/prescription', array('patient' => $patient));
         }
 
     }

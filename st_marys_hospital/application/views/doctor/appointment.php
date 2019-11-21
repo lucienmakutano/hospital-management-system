@@ -22,7 +22,7 @@
 
 			<div class="appointment-content">
 				<p id="title"><strong>Citation number: </strong><?php echo $dt->Citation_card ?></p>
-				<p id="content"><strong>Summary:</strong> <?php echo $dt->summary ?></p>
+				<p id="content"><strong>Name:</strong> <?php echo $dt->fname ?>&nbsp;<?php echo $dt->lname ?></p>
 				<p id="date"><strong> Date and time:</strong> <?php echo $dt->date ?></p>
 				<a href="<?= site_url('doctor/moredetails/' . $dt->Citation_card) ?>"><button id="btn">learn more</button></a>
 			</div>

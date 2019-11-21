@@ -1,10 +1,13 @@
+body, html{
+	max-height: 80%;
+}
 input[type=text],
 input[type=email],
 input[type=number],
 input[type=date],
- input[type=time],
- textarea,
- select{
+input[type=time],
+textarea,
+select{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -51,4 +54,34 @@ hr{
 }
 .prescription-form{
     padding: 0 20%;
+}
+#search{
+	position: relative;
+	margin-left: 90%;
+	margin-bottom: 0;
+	margin-top: 1%;
+}
+#search img{
+	border-radius: 50%;
+	box-shadow: 10px 10px 20px #595959;
+}
+
+#search img:hover{
+	box-shadow: 5px 5px 20px #595959;
+}
+
+#display-screen{
+	position: relative;
+	margin-left: 75%;
+	margin-bottom: 0;
+	margin-top: -300px;
+	z-index: 1;
+	border: 1px solid #0D47A1;
+	box-shadow: -5px -5px 5px #0D47A1;
+	height: 400px;
+	visibility: visible;
+}
+
+#toggle.hide #display-screen{
+	margin-left: 50%;
 }
